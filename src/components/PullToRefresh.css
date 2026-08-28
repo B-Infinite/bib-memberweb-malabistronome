@@ -1,0 +1,56 @@
+/* ── Wrapper: inherits whatever className the parent passes ── */
+.ptr-wrap {
+  position: relative;
+}
+
+/* ── Indicator row that expands/collapses above the content ── */
+.ptr-indicator-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* Smooth snap-back when released or done */
+  transition: height 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* No transition while the finger is still dragging */
+.ptr-indicator-row.is-pulling {
+  transition: none;
+}
+
+/* ── Icon container ── */
+.ptr-icon-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Arrow (pull state) ── */
+.ptr-arrow {
+  transition: opacity 0.1s;
+}
+
+/* ── Spinner (refreshing state) ── */
+.ptr-spinner {
+  animation: ptr-spin 0.75s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes ptr-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Check (done state) ── */
+.ptr-check {
+  animation: ptr-pop 0.2s ease-out;
+}
+
+@keyframes ptr-pop {
+  from { transform: scale(0.6); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}

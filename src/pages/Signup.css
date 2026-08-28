@@ -1,0 +1,432 @@
+.signup-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+}
+
+.signup-header {
+  background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 100%);
+  padding: 52px 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.signup-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.signup-subtitle {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 2px 0 0;
+}
+
+/* ── OTP screen ── */
+.otp-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 8px;
+}
+
+.otp-icon-wrap {
+  width: 64px;
+  height: 64px;
+  background: rgba(31, 60, 40, 0.08);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.otp-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.otp-body {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 300px;
+}
+
+.otp-error {
+  font-size: 13px;
+  color: var(--error);
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.otp-error::before {
+  content: '⚠';
+  font-size: 12px;
+}
+
+.otp-demo-hint {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--text-light);
+  background: var(--bg);
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 8px 14px;
+}
+
+.otp-resend {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.otp-resend-btn {
+  background: none;
+  border: none;
+  color: var(--primary-light);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.otp-countdown {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.signup-body {
+  flex: 1;
+  padding: 28px 24px 40px;
+  overflow-y: auto;
+}
+
+/* Optional field label hint */
+.label-optional {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-light);
+  margin-left: 4px;
+}
+
+/* ── DOB 3-dropdown row ── */
+.dob-row {
+  display: flex;
+  gap: 8px;
+}
+
+.dob-select {
+  flex: 1;
+  padding: 13px 10px 13px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--surface);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%2394A3B8'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 28px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.18s;
+  min-width: 0;
+}
+
+.dob-select:focus {
+  border-color: var(--primary);
+}
+
+/* Slightly wider for month name */
+.dob-select--month { flex: 1.6; }
+.dob-select--day   { flex: 0.9; }
+.dob-select--year  { flex: 1.1; }
+
+/* Placeholder option colour */
+.dob-select option[value=''] { color: var(--text-light); }
+
+.dob-row--error .dob-select {
+  border-color: var(--error);
+  background-color: #FEF2F2;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ── Phone prefix row ── */
+.phone-input-row {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  overflow: hidden;
+  transition: border-color 0.18s;
+}
+
+.phone-input-row:focus-within {
+  border-color: var(--primary);
+}
+
+.phone-input-row--error {
+  border-color: var(--error) !important;
+  background: #FEF2F2;
+}
+
+.phone-prefix {
+  padding: 13px 12px 13px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg);
+  border-right: 1.5px solid var(--border);
+  white-space: nowrap;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.phone-input {
+  flex: 1;
+  padding: 13px 16px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-family: var(--font);
+  color: var(--text);
+  background: transparent;
+  min-width: 0;
+}
+
+.phone-input::placeholder {
+  color: var(--text-light);
+}
+
+/* ── Inline field errors ── */
+.form-input--error {
+  border-color: var(--error) !important;
+  background: #FEF2F2;
+}
+
+.field-error {
+  font-size: 12px;
+  color: var(--error);
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.field-error::before {
+  content: '⚠';
+  font-size: 11px;
+}
+
+/* ── Password strength meter ── */
+.strength-meter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.strength-bars {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.strength-bar {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  transition: background 0.25s;
+}
+
+.strength-label {
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 40px;
+  text-align: right;
+  transition: color 0.25s;
+}
+
+/* ── Password requirements checklist ── */
+.password-rules {
+  list-style: none;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 8px;
+}
+
+.rule-item {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s;
+}
+
+.rule-pass {
+  color: #16A34A;
+}
+
+.rule-fail {
+  color: var(--text-light);
+}
+
+.rule-icon {
+  font-size: 11px;
+  font-weight: 700;
+  width: 14px;
+  text-align: center;
+}
+
+/* ── T&C checkbox row ── */
+.terms-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.18s;
+}
+
+.terms-row--error {
+  border-color: var(--error);
+  background: #FEF2F2;
+}
+
+.terms-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.terms-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid var(--border);
+  border-radius: 5px;
+  background: var(--surface);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  position: relative;
+}
+
+.terms-checkbox:checked {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.terms-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: 2px solid white;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+.terms-checkbox:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+.terms-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.terms-link {
+  color: var(--primary-light);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════
+   DESKTOP LAYOUT  ≥ 768px  (centered card)
+═══════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .signup-page {
+    background: #CBD5E1;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 56px 20px 80px;
+    overflow-y: auto;
+    min-height: 100vh;
+    flex: unset;
+  }
+
+  .signup-header {
+    width: min(680px, 100%);
+    border-radius: 20px 20px 0 0;
+    padding: 32px 48px 28px;
+  }
+
+  .signup-body {
+    width: min(680px, 100%);
+    border-radius: 0 0 20px 20px;
+    padding: 36px 48px 48px;
+    background: var(--surface);
+    box-shadow: 0 8px 40px rgba(31, 60, 40, 0.14);
+    flex: unset;
+    overflow-y: visible;
+  }
+
+  .signup-title  { font-size: 26px; }
+  .dob-row       { gap: 16px; }
+}

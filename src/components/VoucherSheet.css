@@ -1,0 +1,257 @@
+/* ── Overlay ── */
+.vs-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 40, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 300;
+  animation: vsOverlayIn 0.2s ease;
+}
+
+@keyframes vsOverlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Sheet ── */
+.vs-sheet {
+  background: var(--bg);
+  border-radius: 28px 28px 0 0;
+  width: 100%;
+  max-width: 430px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: vsSheetUp 0.28s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+@keyframes vsSheetUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+/* ── Drag handle ── */
+.vs-handle {
+  width: 40px;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 12px auto 0;
+  flex-shrink: 0;
+}
+
+/* ── Header ── */
+.vs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+  background: var(--surface);
+  border-bottom: 1.5px solid var(--border);
+  flex-shrink: 0;
+}
+
+.vs-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vs-merchant-emoji {
+  font-size: 28px;
+  line-height: 1;
+  width: 44px;
+  height: 44px;
+  background: var(--bg);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vs-title-text {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.vs-count {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.vs-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: none;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.vs-close:hover {
+  background: var(--border);
+}
+
+/* ── Scrollable list ── */
+.vs-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vs-empty {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 40px 0;
+}
+
+/* ── Voucher card ── */
+.vc-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.15s, box-shadow 0.15s;
+  padding: 0;
+}
+
+.vc-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.vc-card:active {
+  transform: scale(0.98);
+}
+
+/* Left badge zone */
+.vc-badge-zone {
+  width: 82px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px 8px;
+  align-self: stretch;
+}
+
+.vc-badge {
+  font-size: 11px;
+  font-weight: 800;
+  color: white;
+  padding: 5px 8px;
+  border-radius: 8px;
+  text-align: center;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+  max-width: 66px;
+  word-break: break-word;
+}
+
+.vc-type-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Right info */
+.vc-info {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 6px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vc-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.vc-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.vc-new-badge {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: white;
+  background: var(--accent);
+  padding: 2px 6px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.vc-min-spend {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.vc-expiry {
+  font-size: 11px;
+  color: var(--text-light);
+}
+
+/* Chevron */
+.vc-chevron {
+  color: var(--text-light);
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+
+/* ═══════════════════════════════════════════════
+   DESKTOP  ≥ 768px — centered floating panel
+═══════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .vs-overlay {
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .vs-sheet {
+    border-radius: 24px;
+    max-width: 520px;
+    max-height: 80vh;
+    animation: vsPanelIn 0.22s cubic-bezier(0.34, 1.1, 0.64, 1);
+  }
+
+  @keyframes vsPanelIn {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to   { opacity: 1; transform: scale(1)    translateY(0); }
+  }
+
+  .vs-handle { display: none; }
+}

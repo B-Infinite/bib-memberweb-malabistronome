@@ -1,0 +1,236 @@
+.detail-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+/* ── Shimmer animation ── */
+@keyframes shimmer-sweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ── Hero base ── */
+.detail-hero {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* Gradient-only fallback — aspect-ratio set via inline style per type */
+.detail-hero--gradient {
+  min-height: 200px;
+}
+
+/* Image hero: aspect-ratio set dynamically via inline style (16/9 → real ratio on load) */
+.detail-hero--img {
+  /* aspect-ratio controlled by inline style */
+}
+
+/* The actual image — fills the container absolutely */
+.detail-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.detail-hero-img--loaded {
+  opacity: 1;
+}
+
+/* Shimmer sweep over the gradient while image loads */
+.detail-hero-shimmer {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  overflow: hidden;
+}
+
+.detail-hero-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.14) 50%,
+    transparent 70%
+  );
+  animation: shimmer-sweep 1.6s infinite ease-in-out;
+}
+
+/* Scrim overlay — covers gradient OR image */
+.detail-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.08) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Back button — top-left, frosted */
+.detail-back-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.detail-back-btn:hover { background: rgba(0, 0, 0, 0.55); }
+
+/* Category / type badge — bottom-left of hero */
+.detail-hero-badge {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* Watermark name centred in tenant hero */
+.detail-hero-watermark {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(40px, 12vw, 80px);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.18);
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── Content card ── */
+.detail-content {
+  flex: 1;
+  background: var(--surface);
+  border-radius: 20px 20px 0 0;
+  margin-top: -18px;
+  position: relative;
+  z-index: 2;
+  padding: 26px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detail-meta {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin: 0;
+}
+
+.detail-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.detail-description {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+  white-space: pre-line;   /* honour \n\n paragraph breaks */
+}
+
+/* Auto-detected hyperlinks inside description */
+.detail-link {
+  color: var(--primary-light);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-all;
+}
+
+.detail-link:hover {
+  color: var(--primary);
+}
+
+.detail-divider {
+  height: 1px;
+  background: var(--border);
+  margin-top: 4px;
+}
+
+/* ═══════════════════════════════════════════════
+   DESKTOP  ≥ 768px
+═══════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .detail-page {
+    flex-direction: row;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Hero becomes a fixed left panel — override any inline aspect-ratio */
+  .detail-hero,
+  .detail-hero--gradient,
+  .detail-hero--img {
+    aspect-ratio: unset !important;
+    width: 45%;
+    flex-shrink: 0;
+    align-self: stretch;
+  }
+
+  /* Show full image — gradient background fills any unused space */
+  .detail-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Content fills right side, scrollable */
+  .detail-content {
+    flex: 1;
+    min-width: 0;
+    margin-top: 0;
+    border-radius: 0;
+    overflow-y: auto;
+    padding: 48px 40px;
+    gap: 16px;
+  }
+
+  .detail-title       { font-size: 28px; }
+  .detail-description { font-size: 16px; }
+}

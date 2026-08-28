@@ -1,0 +1,15 @@
+/* ── AppNav shared component styles ──────────────────────────────────────── */
+
+/* Wordmark inside sidebar header (desktop only) */
+.sidebar-logo-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.sidebar-logo-line1,
+.sidebar-logo-line2 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #fff;
+}

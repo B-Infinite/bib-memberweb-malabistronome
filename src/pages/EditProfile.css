@@ -1,0 +1,304 @@
+.ep-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+}
+
+/* ── Header ── */
+.ep-header {
+  background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 60%, var(--primary-light) 100%);
+  padding: 52px 20px 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.ep-header::before {
+  content: '';
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  top: -100px;
+  right: -60px;
+  pointer-events: none;
+}
+
+.ep-back-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.ep-back-btn:hover { background: rgba(255, 255, 255, 0.25); }
+
+.ep-header-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: white;
+  line-height: 1.1;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.ep-header-sub {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 3px 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Form body ── */
+.ep-body {
+  flex: 1;
+  padding: 28px 24px 48px;
+  overflow-y: auto;
+}
+
+/* Optional label hint */
+.ep-label-optional {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-light);
+  margin-left: 4px;
+}
+
+/* ── Phone input row (mirrors Signup) ── */
+.phone-input-row {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  overflow: hidden;
+  transition: border-color 0.18s;
+}
+
+.phone-input-row:focus-within { border-color: var(--primary); }
+
+.phone-input-row--error {
+  border-color: var(--error) !important;
+  background: #FEF2F2;
+}
+
+.phone-prefix {
+  padding: 13px 12px 13px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg);
+  border-right: 1.5px solid var(--border);
+  white-space: nowrap;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.phone-input {
+  flex: 1;
+  padding: 13px 16px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-family: var(--font);
+  color: var(--text);
+  background: transparent;
+  min-width: 0;
+}
+
+.phone-input::placeholder { color: var(--text-light); }
+
+/* ── DOB 3-dropdown row (mirrors Signup) ── */
+.dob-row {
+  display: flex;
+  gap: 8px;
+}
+
+.dob-select {
+  flex: 1;
+  padding: 13px 10px 13px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--surface);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%2394A3B8'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 28px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.18s;
+  min-width: 0;
+}
+
+.dob-select:focus { border-color: var(--primary); }
+
+.dob-select--day   { flex: 0.9; }
+.dob-select--month { flex: 1.6; }
+.dob-select--year  { flex: 1.1; }
+
+.dob-select option[value=''] { color: var(--text-light); }
+
+.dob-row--error .dob-select {
+  border-color: var(--error);
+  background-color: #FEF2F2;
+}
+
+/* ── Field error (mirrors Login/Signup) ── */
+.field-error {
+  font-size: 12px;
+  color: var(--error);
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.field-error::before {
+  content: '⚠';
+  font-size: 11px;
+}
+
+/* ── form-input error state ── */
+.form-input--error {
+  border-color: var(--error) !important;
+  background: #FEF2F2;
+}
+
+/* ── Save button state override ── */
+.ep-save-btn--done {
+  background: #16A34A !important;
+  pointer-events: none;
+}
+
+/* ── OTP Modal overlay ── */
+.ep-otp-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: ep-fade-in 0.2s ease;
+}
+
+@keyframes ep-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.ep-otp-sheet {
+  background: var(--surface);
+  border-radius: 24px 24px 0 0;
+  padding: 32px 28px 48px;
+  width: 100%;
+  max-width: 480px;
+  animation: ep-slide-up 0.25s ease;
+}
+
+@keyframes ep-slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.ep-otp-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.ep-otp-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+.ep-otp-body {
+  font-size: 14px;
+  color: var(--text-light);
+  text-align: center;
+  margin: 0 0 28px;
+  line-height: 1.5;
+}
+
+.ep-otp-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.ep-otp-actions .btn-secondary {
+  flex: 1;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+
+.ep-otp-actions .btn-secondary:hover { background: var(--bg); }
+.ep-otp-actions .btn-secondary:disabled { opacity: 0.5; pointer-events: none; }
+
+.ep-otp-actions .btn-primary {
+  flex: 1.5;
+}
+
+/* ═══════════════════════════════════════════════
+   DESKTOP  ≥ 768px
+═══════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .ep-page {
+    background: #CBD5E1;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 56px 20px 80px;
+    overflow-y: auto;
+    min-height: 100vh;
+    flex: unset;
+  }
+
+  .ep-header {
+    width: min(680px, 100%);
+    border-radius: 20px 20px 0 0;
+    padding: 32px 48px 28px;
+  }
+
+  .ep-body {
+    width: min(680px, 100%);
+    border-radius: 0 0 20px 20px;
+    padding: 36px 48px 48px;
+    background: var(--surface);
+    box-shadow: 0 8px 40px rgba(31, 60, 40, 0.14);
+    flex: unset;
+    overflow-y: visible;
+  }
+
+  .dob-row { gap: 16px; }
+}

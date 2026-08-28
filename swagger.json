@@ -1,0 +1,3138 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "bibiz_memberapi - V1",
+    "description": "<table style='width:100%; border-collapse: collapse;'>    <tr>        <th style='width:50%; text-align:left; background-color:white; padding:15px; border: 1px solid #ddd;'><b><h2>Authentication & Security</h2></b></th>        <th style='width:50%; text-align:left; background-color:white; padding:15px; border: 1px solid #ddd;'><b><h2>API Documentation & Authentication Flow</h2></b></th>    </tr>    <tr>        <td style='padding:20px; border: 1px solid #ddd; font-size:16px; line-height:1.6;'>            <h3><b>This API requires two headers for authentication:</b></h3>            <h4 style='margin-bottom:5px;'><b>1) API Key Authentication</b></h4>            - Every request must include an API Key in the header.<br>            - Example: <code>Authorization-Key: your-api-key</code><br><br>            <h4 style='margin-bottom:5px;'><b>2) Login Token Authentication</b></h4>            - Call <code>/MobileProfile/ProfileLogin</code> with member login credentials to get a <code>Authorization</code>.<br>            - Example: <code>Authorization: your-token</code><br>        </td>        <td style='padding:20px; border: 1px solid #ddd; font-size:16px; line-height:1.6;'>            <h3><b>API Documentation</b></h3>            The API documentation can be accessed <a href='http://localhost:5207/api-docs' target='_blank' style='color:#007bff; text-decoration:none;'><b>here</b></a>.<br><br>            <h3><b>Authentication Flow</b></h3>            1) Pass the API Key (<code>Authorization-Key</code>) in the header.<br>            2) Call <code>/MobileProfile/ProfileLogin</code> to get <code>Authorization</code>.<br>            3) Use <code>Authorization</code> in the header for secure API calls.<br>        </td>    </tr></table>",
+    "version": "v1"
+  },
+  "paths": {
+    "/Card/CardGetListV2": {
+      "post": {
+        "tags": [
+          "Card"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardGetListV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardGetListV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardGetListV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardGetListOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardGetListOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardGetListOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Card/CardPointGetV2": {
+      "post": {
+        "tags": [
+          "Card"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardPointGetV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardPointGetV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardPointGetV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardPointGetOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardPointGetOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardPointGetOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Card/CardTransactionHistoryV2": {
+      "post": {
+        "tags": [
+          "Card"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardTransactionHistoryV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardTransactionHistoryV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardTransactionHistoryV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardTransactionHistoryV2OutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardTransactionHistoryV2OutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardTransactionHistoryV2OutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Card/AutoRegisterMember": {
+      "post": {
+        "tags": [
+          "Card"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoRegisterMemberInputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoRegisterMemberInputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoRegisterMemberInputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutoRegisterMemberOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutoRegisterMemberOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutoRegisterMemberOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Client/GetBrandListV2": {
+      "post": {
+        "tags": [
+          "Client"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetBrandListOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetBrandListOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetBrandListOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Gift/CardGetGiftListV2": {
+      "post": {
+        "tags": [
+          "Gift"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardGetGiftListV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardGetGiftListV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardGetGiftListV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetGiftListOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetGiftListOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetGiftListOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Gift/RedeemGiftV2": {
+      "post": {
+        "tags": [
+          "Gift"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedeemGiftV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedeemGiftV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedeemGiftV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedeemGiftOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedeemGiftOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedeemGiftOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MobileProfile/SendRegOTPV2": {
+      "post": {
+        "tags": [
+          "MobileProfile"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendRegOTPV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendRegOTPV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendRegOTPV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendRegOTPOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendRegOTPOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendRegOTPOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MobileProfile/RegOTPConfirmationV2": {
+      "post": {
+        "tags": [
+          "MobileProfile"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegOTPConfirmationV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegOTPConfirmationV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegOTPConfirmationV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MobileProfile/ProfileLoginV2": {
+      "post": {
+        "tags": [
+          "MobileProfile"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileLoginV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileLoginV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileLoginV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileLoginV2OutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileLoginV2OutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileLoginV2OutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MobileProfile/ProfileGetDetailV2": {
+      "post": {
+        "tags": [
+          "MobileProfile"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileGetDetailOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileGetDetailOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileGetDetailOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MobileProfile/ProfileChangePasswordV2": {
+      "post": {
+        "tags": [
+          "MobileProfile"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileChangePasswordV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileChangePasswordV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileChangePasswordV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MobileProfile/ProfileUpdateSendOTPV2": {
+      "post": {
+        "tags": [
+          "MobileProfile"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileUpdateSendOTPV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileUpdateSendOTPV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileUpdateSendOTPV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileUpdateSendOTPOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileUpdateSendOTPOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileUpdateSendOTPOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MobileProfile/ProfileUpdateOTPConfirmationV2": {
+      "post": {
+        "tags": [
+          "MobileProfile"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileUpdateOTPConfirmationV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileUpdateOTPConfirmationV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileUpdateOTPConfirmationV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileUpdateOTPConfirmationOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileUpdateOTPConfirmationOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileUpdateOTPConfirmationOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MobileProfile/ProfileForgotPasswordV2": {
+      "post": {
+        "tags": [
+          "MobileProfile"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileForgotPasswordV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileForgotPasswordV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileForgotPasswordV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MobileProfile/DeleteAccountV2": {
+      "post": {
+        "tags": [
+          "MobileProfile"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteAccountV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteAccountV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteAccountV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Promotion/GetHighlightPromotionListV2": {
+      "post": {
+        "tags": [
+          "Promotion"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetHighlightPromotionListOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetHighlightPromotionListOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetHighlightPromotionListOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Promotion/GetPromotionListV2": {
+      "post": {
+        "tags": [
+          "Promotion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetPromotionListV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetPromotionListV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetPromotionListV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPromotionListOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPromotionListOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPromotionListOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Promotion/GetSinglePromotionV2": {
+      "post": {
+        "tags": [
+          "Promotion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetSinglePromotionV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetSinglePromotionV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetSinglePromotionV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSinglePromotionOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSinglePromotionOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSinglePromotionOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Voucher/GetVoucherListV2": {
+      "post": {
+        "tags": [
+          "Voucher"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVoucherListV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVoucherListV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVoucherListV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetVoucherListOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetVoucherListOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetVoucherListOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Voucher/GetVoucherHistoryListV2": {
+      "post": {
+        "tags": [
+          "Voucher"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVoucherHistoryListV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVoucherHistoryListV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVoucherHistoryListV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetVoucherHistoryListOutputViewModelApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetVoucherHistoryListOutputViewModelApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetVoucherHistoryListOutputViewModelApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Voucher/RedeemVoucherV2": {
+      "post": {
+        "tags": [
+          "Voucher"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedeemVoucherV2InputViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedeemVoucherV2InputViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedeemVoucherV2InputViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/WarmUp/WarmUpApi": {
+      "get": {
+        "tags": [
+          "WarmUp"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiOutputViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApiResponseMessageViewModel": {
+        "required": [
+          "english",
+          "malay",
+          "mandarin"
+        ],
+        "type": "object",
+        "properties": {
+          "english": {
+            "minLength": 1,
+            "type": "string",
+            "description": "English ResponseMessage"
+          },
+          "malay": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Malay ResponseMessage"
+          },
+          "mandarin": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Mandarin ResponseMessage"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AutoRegisterMemberInputViewModel": {
+        "type": "object",
+        "properties": {
+          "mobileNo": {
+            "type": "string",
+            "description": "MobileNo",
+            "nullable": true
+          },
+          "clientID": {
+            "type": "string",
+            "description": "ClientID",
+            "nullable": true
+          },
+          "cardTypeID": {
+            "type": "string",
+            "description": "CardTypeID",
+            "nullable": true
+          },
+          "clientSetupID": {
+            "type": "string",
+            "description": "ClientSetupID (optional — V2 only, scopes the duplicate card check to same ClientSetupID)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "AutoRegisterMemberInputViewModel"
+      },
+      "AutoRegisterMemberOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "cardID": {
+            "type": "string",
+            "description": "CardID",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AutoRegisterMemberOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/AutoRegisterMemberOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CardGetGiftListV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "cardNo": {
+            "type": "string",
+            "description": "CardNo",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "CardGetGiftListV2InputViewModel"
+      },
+      "CardGetListDetailOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "clientID": {
+            "type": "string",
+            "description": "Client ID",
+            "nullable": true
+          },
+          "clientName": {
+            "type": "string",
+            "description": "Client Name",
+            "nullable": true
+          },
+          "clientCategory": {
+            "type": "string",
+            "description": "Client Category",
+            "nullable": true
+          },
+          "clientImage": {
+            "type": "string",
+            "description": "Client Image",
+            "nullable": true
+          },
+          "cardTypeID": {
+            "type": "string",
+            "description": "CardTypeID",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Description",
+            "nullable": true
+          },
+          "cardTypeImage": {
+            "type": "string",
+            "description": "CardTypeImage",
+            "nullable": true
+          },
+          "cardTypeFeatureID": {
+            "type": "string",
+            "description": "CardTypeFeatureID",
+            "nullable": true
+          },
+          "benefits": {
+            "type": "string",
+            "description": "Benefits",
+            "nullable": true
+          },
+          "benefitImg": {
+            "type": "string",
+            "description": "BenefitImg",
+            "nullable": true
+          },
+          "tnCs": {
+            "type": "string",
+            "description": "TnCs",
+            "nullable": true
+          },
+          "isHaveCard": {
+            "type": "string",
+            "description": "IsHaveCard (1 is member got this card, 0 is dont have)",
+            "nullable": true
+          },
+          "cardNo": {
+            "type": "string",
+            "description": "CardNo — populated when IsHaveCard = \"1\"",
+            "nullable": true
+          },
+          "isAuthorized": {
+            "type": "string",
+            "description": "IsAuthorized  (1 is card need authorized, 0 is no need)",
+            "nullable": true
+          },
+          "isReferral": {
+            "type": "string",
+            "description": "IsReferral   (1 is card got referral, 0 is dont have)",
+            "nullable": true
+          },
+          "isCardAvailability": {
+            "type": "string",
+            "description": "IsCardAvailability (1 is card stock still availability, 0 is card no stock)",
+            "nullable": true
+          },
+          "isRequiredIC": {
+            "type": "string",
+            "description": "IsRequiredIC (1 is required, 0 is not required)",
+            "nullable": true
+          },
+          "isRequiredAddress": {
+            "type": "string",
+            "description": "IsRequiredAddress (1 is required, 0 is not required)",
+            "nullable": true
+          },
+          "isRequiredState": {
+            "type": "string",
+            "description": "IsRequiredState (1 is required, 0 is not required)",
+            "nullable": true
+          },
+          "isRequiredCountry": {
+            "type": "string",
+            "description": "IsRequiredCountry (1 is required, 0 is not required)",
+            "nullable": true
+          },
+          "isRequiredGender": {
+            "type": "string",
+            "description": "IsRequiredGender (1 is required, 0 is not required)",
+            "nullable": true
+          },
+          "isRequiredRace": {
+            "type": "string",
+            "description": "IsRequiredRace (1 is required, 0 is not required)",
+            "nullable": true
+          },
+          "isRequiredDesignation": {
+            "type": "string",
+            "description": "IsRequiredDesignation (1 is required, 0 is not required)",
+            "nullable": true
+          },
+          "isRequiredMaritalStatus": {
+            "type": "string",
+            "description": "IsRequiredMaritalStatus (1 is required, 0 is not required)",
+            "nullable": true
+          },
+          "isRequiredAccountNumber": {
+            "type": "string",
+            "description": "IsRequiredAccountNumber (1 is required, 0 is not required)",
+            "nullable": true
+          },
+          "isRequiredCardPlateNo": {
+            "type": "string",
+            "description": "IsRequiredCardPlateNo (1 is required, 0 is not required)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "CardGetListDetailOutputViewModel"
+      },
+      "CardGetListOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "cardList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CardGetListDetailOutputViewModel"
+            },
+            "description": "CardList",
+            "nullable": true
+          },
+          "merchantHQContact": {
+            "$ref": "#/components/schemas/GetMerchantHQContactOutputViewModel"
+          }
+        },
+        "additionalProperties": false,
+        "description": "CardGetListOutputViewModel"
+      },
+      "CardGetListOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/CardGetListOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CardGetListV2InputViewModel": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "CardGetListV2InputViewModel"
+      },
+      "CardPointGetOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "balPoint": {
+            "type": "string",
+            "description": "BalPoint",
+            "nullable": true
+          },
+          "balPointInCash": {
+            "type": "string",
+            "description": "BalPointInCash",
+            "nullable": true
+          },
+          "balCash": {
+            "type": "string",
+            "description": "BalCash",
+            "nullable": true
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "ExpiryDate",
+            "nullable": true
+          },
+          "pointToCashRate": {
+            "type": "string",
+            "description": "PointToCashRate(This property represents how much cash is equivalent to a single point. )\r\nFor example, if the value of this property is \"0.010\", it means that 1 point is equivalent to 0.010 units of cash.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "CardPointGetOutputViewModel"
+      },
+      "CardPointGetOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/CardPointGetOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CardPointGetV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "cardNo": {
+            "type": "string",
+            "description": "CardNo",
+            "nullable": true
+          },
+          "cardTypeID": {
+            "type": "string",
+            "description": "CardTypeID",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "CardPointGetV2InputViewModel"
+      },
+      "CardTransactionHistoryV2DetailOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "transactionCategory": {
+            "type": "string",
+            "description": "TransactionCategory (Point, Credit)",
+            "nullable": true
+          },
+          "transactionTypeID": {
+            "type": "string",
+            "description": "TransactionTypeID (Point: 1=Earned, 2=Redeemed, 3=Adjustment, 4=Expired | Credit: 1=TopUp, 2=Redeemed, 3=Adjustment)",
+            "nullable": true
+          },
+          "transactionType": {
+            "type": "string",
+            "description": "TransactionType (Earned, Redeemed, Adjustment, Expired, Activation, Top Up, Void Top Up, Void Redemption)",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Description",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "Remark (Example: #123)",
+            "nullable": true
+          },
+          "processDate": {
+            "type": "string",
+            "description": "ProcessDate",
+            "nullable": true
+          },
+          "processDateInDateTime": {
+            "type": "string",
+            "description": "ProcessDateInDateTime",
+            "format": "date-time",
+            "nullable": true
+          },
+          "amount": {
+            "type": "string",
+            "description": "Amount (e.g. \"+100 pts\", \"-50 pts\", \"+10.00\", \"-5.00\")",
+            "nullable": true
+          },
+          "amountNumber": {
+            "type": "number",
+            "description": "AmountNumber",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "CardTransactionHistoryV2DetailOutputViewModel"
+      },
+      "CardTransactionHistoryV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "cardNo": {
+            "type": "string",
+            "description": "CardNo",
+            "nullable": true
+          },
+          "cardTypeID": {
+            "type": "string",
+            "description": "CardTypeID",
+            "nullable": true
+          },
+          "startIndex": {
+            "type": "string",
+            "description": "StartIndex (default: 1)",
+            "nullable": true
+          },
+          "endIndex": {
+            "type": "string",
+            "description": "EndIndex (default: 100)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "CardTransactionHistoryV2InputViewModel"
+      },
+      "CardTransactionHistoryV2OutputViewModel": {
+        "type": "object",
+        "properties": {
+          "transactionList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CardTransactionHistoryV2DetailOutputViewModel"
+            },
+            "description": "TransactionList",
+            "nullable": true
+          },
+          "totalPointEarned": {
+            "type": "string",
+            "description": "TotalPointEarned",
+            "nullable": true
+          },
+          "totalPointRedeemed": {
+            "type": "string",
+            "description": "TotalPointRedeemed",
+            "nullable": true
+          },
+          "totalPointExpired": {
+            "type": "string",
+            "description": "TotalPointExpired",
+            "nullable": true
+          },
+          "totalCreditTopUp": {
+            "type": "string",
+            "description": "TotalCreditTopUp",
+            "nullable": true
+          },
+          "totalCreditRedeemed": {
+            "type": "string",
+            "description": "TotalCreditRedeemed",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "CardTransactionHistoryV2OutputViewModel"
+      },
+      "CardTransactionHistoryV2OutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/CardTransactionHistoryV2OutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteAccountV2InputViewModel": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "DeleteAccountV2InputViewModel"
+      },
+      "GetBrandListItemOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "merchantHQID": {
+            "type": "integer",
+            "description": "MerchantHQID",
+            "format": "int32"
+          },
+          "companyName": {
+            "type": "string",
+            "description": "CompanyName — brand name",
+            "nullable": true
+          },
+          "brandImage": {
+            "type": "string",
+            "description": "BrandImage — full URL to brand logo/image",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Description — brand remarks or description",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "description": "Category — brand category name",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "description": "Url — brand website",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetBrandListItemOutputViewModel"
+      },
+      "GetBrandListOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "brandList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetBrandListItemOutputViewModel"
+            },
+            "description": "BrandList",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetBrandListOutputViewModel"
+      },
+      "GetBrandListOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/GetBrandListOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetGiftListOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "giftList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetSingleGiftOutputViewModel"
+            },
+            "description": "GiftList",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetGiftListOutputViewModel"
+      },
+      "GetGiftListOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/GetGiftListOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetHighlightPromotionListDetailOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "promotionID": {
+            "type": "string",
+            "description": "PromotionID",
+            "nullable": true
+          },
+          "promotionTitle": {
+            "type": "string",
+            "description": "PromotionTitle",
+            "nullable": true
+          },
+          "promotionImage": {
+            "type": "string",
+            "description": "PromotionImage",
+            "nullable": true
+          },
+          "validPeriod": {
+            "type": "string",
+            "description": "ValidPeriod",
+            "nullable": true
+          },
+          "clientDisplayName": {
+            "type": "string",
+            "description": "ClientDisplayName",
+            "nullable": true
+          },
+          "clientLogoImage": {
+            "type": "string",
+            "description": "ClientLogoImage",
+            "nullable": true
+          },
+          "postingDateStart": {
+            "type": "string",
+            "description": "PostingDateStart",
+            "format": "date-time",
+            "nullable": true
+          },
+          "postingDateEnd": {
+            "type": "string",
+            "description": "PostingDateEnd",
+            "format": "date-time",
+            "nullable": true
+          },
+          "clientID": {
+            "type": "integer",
+            "description": "ClientID",
+            "format": "int32",
+            "nullable": true
+          },
+          "companyName": {
+            "type": "string",
+            "description": "CompanyName",
+            "nullable": true
+          },
+          "brandImage": {
+            "type": "string",
+            "description": "BrandImage",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetHighlightPromotionListDetailOutputViewModel"
+      },
+      "GetHighlightPromotionListOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "highlightPromotionList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetHighlightPromotionListDetailOutputViewModel"
+            },
+            "description": "HighlightPromotionList",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetHighlightPromotionListOutputViewModel"
+      },
+      "GetHighlightPromotionListOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/GetHighlightPromotionListOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetMerchantHQContactOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "companyName": {
+            "type": "string",
+            "description": "CompanyName",
+            "nullable": true
+          },
+          "telephone": {
+            "type": "string",
+            "description": "Telephone",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "description": "Email",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetMerchantHQContactOutputViewModel"
+      },
+      "GetPromotionCategoryListOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "promotionCategoryID": {
+            "type": "string",
+            "description": "PromotionCategoryID",
+            "nullable": true
+          },
+          "categoryName_English": {
+            "type": "string",
+            "description": "CategoryName_English",
+            "nullable": true
+          },
+          "categoryName_Malay": {
+            "type": "string",
+            "description": "CategoryName_Malay",
+            "nullable": true
+          },
+          "categoryName_Mandarin": {
+            "type": "string",
+            "description": "CategoryName_Mandarin",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetPromotionCategoryListOutputViewModel"
+      },
+      "GetPromotionListOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "promotionCategoryList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetPromotionCategoryListOutputViewModel"
+            },
+            "description": "PromotionCategoryList",
+            "nullable": true
+          },
+          "promotionList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetSinglePromotionDetailOutputViewModel"
+            },
+            "description": "PromotionList",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetPromotionListOutputViewModel"
+      },
+      "GetPromotionListOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/GetPromotionListOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetPromotionListV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "cardNo": {
+            "type": "string",
+            "description": "CardNo",
+            "nullable": true
+          },
+          "cardTypeID": {
+            "type": "string",
+            "description": "CardTypeID",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetPromotionListV2InputViewModel"
+      },
+      "GetSingleGiftOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "giftID": {
+            "type": "string",
+            "description": "GiftID",
+            "nullable": true
+          },
+          "giftName": {
+            "type": "string",
+            "description": "GiftName",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Description",
+            "nullable": true
+          },
+          "validPeriod": {
+            "type": "string",
+            "description": "ValidPeriod",
+            "nullable": true
+          },
+          "point": {
+            "type": "string",
+            "description": "Point",
+            "nullable": true
+          },
+          "discountPoint": {
+            "type": "string",
+            "description": "DiscountPoint",
+            "nullable": true
+          },
+          "credit": {
+            "type": "string",
+            "description": "Credit",
+            "nullable": true
+          },
+          "discountCredit": {
+            "type": "string",
+            "description": "DiscountCredit",
+            "nullable": true
+          },
+          "giftImage": {
+            "type": "string",
+            "description": "GiftImage",
+            "nullable": true
+          },
+          "expireDate": {
+            "type": "string",
+            "description": "ExpireDate",
+            "nullable": true
+          },
+          "tnC": {
+            "type": "string",
+            "description": "TnC",
+            "nullable": true
+          },
+          "giftCatagoryID": {
+            "type": "string",
+            "description": "GiftCatagoryID",
+            "nullable": true
+          },
+          "brandImage": {
+            "type": "string",
+            "description": "BrandImage",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetSingleGiftOutputViewModel"
+      },
+      "GetSinglePromotionDetailOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "promotionID": {
+            "type": "string",
+            "description": "PromotionID",
+            "nullable": true
+          },
+          "promotionCategoryID": {
+            "type": "string",
+            "description": "PromotionCategoryID",
+            "nullable": true
+          },
+          "promotionTitle": {
+            "type": "string",
+            "description": "PromotionTitle",
+            "nullable": true
+          },
+          "promotionImage": {
+            "type": "string",
+            "description": "PromotionImage",
+            "nullable": true
+          },
+          "promotionStartDate": {
+            "type": "string",
+            "description": "PromotionStartDate",
+            "nullable": true
+          },
+          "promotionEndDate": {
+            "type": "string",
+            "description": "PromotionEndDate",
+            "nullable": true
+          },
+          "promotionDescription": {
+            "type": "string",
+            "description": "PromotionDescription",
+            "nullable": true
+          },
+          "companyName": {
+            "type": "string",
+            "description": "CompanyName",
+            "nullable": true
+          },
+          "brandImage": {
+            "type": "string",
+            "description": "BrandImage",
+            "nullable": true
+          },
+          "outletList": {
+            "$ref": "#/components/schemas/OutletLocatorListOutputViewModel"
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetSinglePromotionDetailOutputViewModel"
+      },
+      "GetSinglePromotionOutletListOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "merchantID": {
+            "type": "string",
+            "description": "MerchantID",
+            "nullable": true
+          },
+          "companyName": {
+            "type": "string",
+            "description": "CompanyName",
+            "nullable": true
+          },
+          "clientID": {
+            "type": "string",
+            "description": "ClientID",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetSinglePromotionOutletListOutputViewModel"
+      },
+      "GetSinglePromotionOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "promotionDetail": {
+            "$ref": "#/components/schemas/GetSinglePromotionDetailOutputViewModel"
+          },
+          "outletList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetSinglePromotionOutletListOutputViewModel"
+            },
+            "description": "OutletList",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetSinglePromotionOutputViewModel"
+      },
+      "GetSinglePromotionOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/GetSinglePromotionOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetSinglePromotionV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "promotionID": {
+            "type": "string",
+            "description": "PromotionID",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetSinglePromotionV2InputViewModel"
+      },
+      "GetSingleVoucherOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "voucherID": {
+            "type": "string",
+            "description": "VoucherID",
+            "nullable": true
+          },
+          "voucherIDName": {
+            "type": "string",
+            "description": "VoucherIDName",
+            "nullable": true
+          },
+          "voucherName": {
+            "type": "string",
+            "description": "VoucherName",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Description",
+            "nullable": true
+          },
+          "tnC": {
+            "type": "string",
+            "description": "TnC",
+            "nullable": true
+          },
+          "qty": {
+            "type": "string",
+            "description": "Qty — used by legacy (non-V2) endpoints only; not returned by GetVoucherListV2",
+            "nullable": true
+          },
+          "pointRequired": {
+            "type": "string",
+            "description": "PointRequired",
+            "nullable": true
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "ExpiryDate",
+            "nullable": true
+          },
+          "voucherImage": {
+            "type": "string",
+            "description": "VoucherImage",
+            "nullable": true
+          },
+          "voucherMemberID": {
+            "type": "string",
+            "description": "VoucherMemberID",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "description": "Status",
+            "nullable": true
+          },
+          "swipeVoucherIndicator": {
+            "type": "string",
+            "description": "SwipeVoucherIndicator",
+            "nullable": true
+          },
+          "secondsLeft": {
+            "type": "string",
+            "description": "SecondsLeft",
+            "nullable": true
+          },
+          "brandImage": {
+            "type": "string",
+            "description": "BrandImage",
+            "nullable": true
+          },
+          "maxRedeemPerTransaction": {
+            "type": "string",
+            "description": "maxRedeemPerTransaction",
+            "nullable": true,
+            "example": "1"
+          },
+          "minSalesAmount": {
+            "type": "string",
+            "description": "minSalesAmount",
+            "nullable": true,
+            "example": "20"
+          },
+          "voucherRedeemTypeID": {
+            "type": "string",
+            "description": "voucherRedeemTypeID (1 is Gift Vocuher, 2 is Fixed Amount Voucher, 3 is Percentage Voucher)",
+            "nullable": true,
+            "example": "1"
+          },
+          "voucherTagDisplay": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "voucherTagDisplay",
+            "nullable": true
+          },
+          "voucherOTP": {
+            "type": "string",
+            "description": "VoucherOTP — 6-digit OTP code for voucher redemption verification",
+            "nullable": true
+          },
+          "voucherSerialNo": {
+            "type": "string",
+            "description": "VoucherSerialNo — unique serial number of the issued voucher",
+            "nullable": true
+          },
+          "voucherCodeSourceID": {
+            "type": "integer",
+            "description": "VoucherCodeSourceID — voucher source type (e.g. 2 = redeemable via RedeemVoucherV2)",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetSingleVoucherOutputViewModel"
+      },
+      "GetVoucherHistoryListDetailOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "cardNo": {
+            "type": "string",
+            "description": "CardNo",
+            "nullable": true
+          },
+          "memberName": {
+            "type": "string",
+            "description": "MemberName",
+            "nullable": true
+          },
+          "voucherID": {
+            "type": "string",
+            "description": "VoucherID",
+            "nullable": true
+          },
+          "voucherName": {
+            "type": "string",
+            "description": "VoucherName",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Description",
+            "nullable": true
+          },
+          "tnC": {
+            "type": "string",
+            "description": "TnC",
+            "nullable": true
+          },
+          "merchantName": {
+            "type": "string",
+            "description": "MerchantName",
+            "nullable": true
+          },
+          "redeemDate": {
+            "type": "string",
+            "description": "RedeemDate",
+            "nullable": true
+          },
+          "voucherMemberID": {
+            "type": "string",
+            "description": "VoucherMemberID",
+            "nullable": true
+          },
+          "voucherMethodID": {
+            "type": "string",
+            "description": "VoucherMethodID",
+            "nullable": true
+          },
+          "swipeVoucherIndicator": {
+            "type": "string",
+            "description": "SwipeVoucherIndicator",
+            "nullable": true
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "ExpiryDate",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "description": "Status",
+            "nullable": true
+          },
+          "voucherImage": {
+            "type": "string",
+            "description": "VoucherImage",
+            "nullable": true
+          },
+          "brandImage": {
+            "type": "string",
+            "description": "BrandImage",
+            "nullable": true
+          },
+          "pointRequired": {
+            "type": "string",
+            "description": "PointRequired",
+            "nullable": true
+          },
+          "maxRedeemPerTransaction": {
+            "type": "string",
+            "description": "maxRedeemPerTransaction",
+            "nullable": true
+          },
+          "minSalesAmount": {
+            "type": "string",
+            "description": "minSalesAmount",
+            "nullable": true
+          },
+          "voucherRedeemTypeID": {
+            "type": "string",
+            "description": "voucherRedeemTypeID (1 = Gift Voucher, 2 = Fixed Amount, 3 = Percentage)",
+            "nullable": true
+          },
+          "voucherTagDisplay": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "voucherTagDisplay",
+            "nullable": true
+          },
+          "voucherSerialNo": {
+            "type": "string",
+            "description": "VoucherSerialNo — unique serial number of the issued voucher",
+            "nullable": true
+          },
+          "voucherOTP": {
+            "type": "string",
+            "description": "VoucherOTP — 6-digit OTP code (populated for internal vouchers only)",
+            "nullable": true
+          },
+          "voucherCodeSourceID": {
+            "type": "integer",
+            "description": "VoucherCodeSourceID",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetVoucherHistoryListDetailOutputViewModel"
+      },
+      "GetVoucherHistoryListOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "voucherHistoryList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetVoucherHistoryListDetailOutputViewModel"
+            },
+            "description": "VoucherHistoryList",
+            "nullable": true
+          },
+          "totalRedeemed": {
+            "type": "string",
+            "description": "TotalRedeemed",
+            "nullable": true
+          },
+          "totalExpired": {
+            "type": "string",
+            "description": "TotalExpired",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetVoucherHistoryListOutputViewModel"
+      },
+      "GetVoucherHistoryListOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/GetVoucherHistoryListOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetVoucherHistoryListV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "cardNo": {
+            "type": "string",
+            "description": "CardNo",
+            "nullable": true
+          },
+          "startIndex": {
+            "type": "string",
+            "description": "StartIndex (default: 1)",
+            "nullable": true
+          },
+          "endIndex": {
+            "type": "string",
+            "description": "EndIndex (default: 100)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetVoucherHistoryListV2InputViewModel"
+      },
+      "GetVoucherListOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "voucherList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetSingleVoucherOutputViewModel"
+            },
+            "description": "VoucherList",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetVoucherListOutputViewModel"
+      },
+      "GetVoucherListOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/GetVoucherListOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetVoucherListV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "cardNo": {
+            "type": "string",
+            "description": "CardNo",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "GetVoucherListV2InputViewModel"
+      },
+      "ObjectApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OutletLocatorDetailsOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "clientID": {
+            "type": "string",
+            "description": "ClientID",
+            "nullable": true
+          },
+          "merchantID": {
+            "type": "string",
+            "description": "MerchantID",
+            "nullable": true
+          },
+          "companyName": {
+            "type": "string",
+            "description": "CompanyName",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "description": "Address",
+            "nullable": true
+          },
+          "postcode": {
+            "type": "string",
+            "description": "Postcode",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "description": "State",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "description": "Country",
+            "nullable": true
+          },
+          "telephone": {
+            "type": "string",
+            "description": "Telephone",
+            "nullable": true
+          },
+          "fax": {
+            "type": "string",
+            "description": "Fax",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "description": "Email",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "description": "Url",
+            "nullable": true
+          },
+          "latitude": {
+            "type": "string",
+            "description": "Latitude",
+            "nullable": true
+          },
+          "longitude": {
+            "type": "string",
+            "description": "Longitude",
+            "nullable": true
+          },
+          "distance": {
+            "type": "string",
+            "description": "Distance (km)",
+            "nullable": true
+          },
+          "distanceInDouble": {
+            "type": "number",
+            "description": "DistanceInDouble (km)",
+            "format": "double",
+            "nullable": true
+          },
+          "brandImage": {
+            "type": "string",
+            "description": "BrandImage",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "OutletLocatorDetailsOutputViewModel"
+      },
+      "OutletLocatorListOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "outletLocatorListDetail": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OutletLocatorDetailsOutputViewModel"
+            },
+            "description": "OutletLocatorListDetail",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "OutletLocatorListOutputViewModel"
+      },
+      "ProfileChangePasswordV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "oldPassword": {
+            "type": "string",
+            "description": "OldPassword",
+            "nullable": true
+          },
+          "newPassword": {
+            "type": "string",
+            "description": "NewPassword",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "ProfileChangePasswordV2InputViewModel"
+      },
+      "ProfileForgotPasswordV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "mobileNoOrEmailAddress": {
+            "type": "string",
+            "description": "MobileNoOrEmailAddress",
+            "nullable": true
+          },
+          "isMobileNoOrEmailAddressLogin": {
+            "type": "string",
+            "description": "IsMobileNoOrEmailAddressLogin (1 = MobileNo, 2 = Email)",
+            "nullable": true
+          },
+          "clientID": {
+            "type": "string",
+            "description": "ClientID - the loyalty client this account belongs to",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "ProfileForgotPasswordV2InputViewModel"
+      },
+      "ProfileGetDetailOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "mobileNo": {
+            "type": "string",
+            "description": "MobileNo",
+            "nullable": true
+          },
+          "emailAddress": {
+            "type": "string",
+            "description": "EmailAddress",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name",
+            "nullable": true
+          },
+          "birthdate": {
+            "type": "string",
+            "description": "Birthdate",
+            "nullable": true
+          },
+          "canEditBirthdate": {
+            "type": "string",
+            "description": "CanEditBirthdate (0 is cant update birthdate, 1 is can update birthdate)",
+            "nullable": true
+          },
+          "ic": {
+            "type": "string",
+            "description": "IC",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "description": "Address",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "description": "State",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "description": "Country",
+            "nullable": true
+          },
+          "gender": {
+            "type": "string",
+            "description": "Gender",
+            "nullable": true
+          },
+          "race": {
+            "type": "string",
+            "description": "Race",
+            "nullable": true
+          },
+          "designation": {
+            "type": "string",
+            "description": "Designation",
+            "nullable": true
+          },
+          "maritalStatus": {
+            "type": "string",
+            "description": "MaritalStatus",
+            "nullable": true
+          },
+          "accountNumber": {
+            "type": "string",
+            "description": "AccountNumber",
+            "nullable": true
+          },
+          "carPlateNo": {
+            "type": "string",
+            "description": "CarPlateNo",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "ProfileGetDetailsOutputViewModel"
+      },
+      "ProfileGetDetailOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/ProfileGetDetailOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfileLoginV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "mobileNoOrEmailAddress": {
+            "type": "string",
+            "description": "MobileNoOrEmailAddress",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "description": "Password",
+            "nullable": true
+          },
+          "isMobileNoOrEmailAddressLogin": {
+            "type": "string",
+            "description": "IsMobileNoOrEmailAddressLogin (1 = MobileNo, 2 = Email)",
+            "nullable": true
+          },
+          "clientID": {
+            "type": "string",
+            "description": "ClientID - the loyalty client this account belongs to",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "ProfileLoginV2InputViewModel"
+      },
+      "ProfileLoginV2OutputViewModel": {
+        "type": "object",
+        "properties": {
+          "mobileNo": {
+            "type": "string",
+            "description": "MobileNo",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name",
+            "nullable": true
+          },
+          "token": {
+            "type": "string",
+            "description": "Token",
+            "nullable": true
+          },
+          "clientID": {
+            "type": "string",
+            "description": "ClientID",
+            "nullable": true
+          },
+          "cardNo": {
+            "type": "string",
+            "description": "CardNo — card number linked to this profile for the given ClientID (null if no card yet)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "ProfileLoginV2OutputViewModel"
+      },
+      "ProfileLoginV2OutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/ProfileLoginV2OutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfileUpdateOTPConfirmationOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "mobileNo": {
+            "type": "string",
+            "description": "MobileNo",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "ProfileUpdateOTPConfirmationOutputViewModel"
+      },
+      "ProfileUpdateOTPConfirmationOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/ProfileUpdateOTPConfirmationOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfileUpdateOTPConfirmationV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "newMobileNo": {
+            "type": "string",
+            "description": "NewMobileNo",
+            "nullable": true
+          },
+          "emailAddress": {
+            "type": "string",
+            "description": "EmailAddress",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name",
+            "nullable": true
+          },
+          "birthdate": {
+            "type": "string",
+            "description": "Birthdate",
+            "nullable": true
+          },
+          "otp": {
+            "type": "string",
+            "description": "OTP",
+            "nullable": true
+          },
+          "ic": {
+            "type": "string",
+            "description": "IC",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "description": "Address",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "description": "State",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "description": "Country",
+            "nullable": true
+          },
+          "gender": {
+            "type": "string",
+            "description": "Gender",
+            "nullable": true
+          },
+          "race": {
+            "type": "string",
+            "description": "Race",
+            "nullable": true
+          },
+          "designation": {
+            "type": "string",
+            "description": "Designation",
+            "nullable": true
+          },
+          "maritalStatus": {
+            "type": "string",
+            "description": "MaritalStatus",
+            "nullable": true
+          },
+          "accountNumber": {
+            "type": "string",
+            "description": "AccountNumber",
+            "nullable": true
+          },
+          "carPlateNo": {
+            "type": "string",
+            "description": "CarPlateNo",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "ProfileUpdateOTPConfirmationV2InputViewModel"
+      },
+      "ProfileUpdateSendOTPOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "mobileNo": {
+            "type": "string",
+            "description": "MobileNo",
+            "nullable": true
+          },
+          "displayOTP": {
+            "type": "string",
+            "description": "DisplayOTP (1 is show, 0 is not show)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "ProfileUpdateSendOTPOutputViewModel"
+      },
+      "ProfileUpdateSendOTPOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/ProfileUpdateSendOTPOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfileUpdateSendOTPV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "newMobileNo": {
+            "type": "string",
+            "description": "NewMobileNo",
+            "nullable": true
+          },
+          "emailAddress": {
+            "type": "string",
+            "description": "EmailAddress",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "ProfileUpdateSendOTPV2InputViewModel"
+      },
+      "RedeemGiftOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "expireDate": {
+            "type": "string",
+            "description": "ExpireDate",
+            "nullable": true
+          },
+          "redeemUrl": {
+            "type": "string",
+            "description": "RedeemUrl",
+            "nullable": true
+          },
+          "voucherOTP": {
+            "type": "string",
+            "description": "VoucherOTP — 6-digit OTP code for voucher redemption verification (only populated for voucher gifts)",
+            "nullable": true
+          },
+          "voucherSerialNo": {
+            "type": "string",
+            "description": "VoucherSerialNo — unique serial number of the issued voucher (only populated for voucher gifts)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "RedeemGiftOutputViewModel"
+      },
+      "RedeemGiftOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/RedeemGiftOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RedeemGiftV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "cardNo": {
+            "type": "string",
+            "description": "CardNo",
+            "nullable": true
+          },
+          "giftID": {
+            "type": "string",
+            "description": "GiftID",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "RedeemGiftV2InputViewModel"
+      },
+      "RedeemVoucherV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "cardNo": {
+            "type": "string",
+            "description": "CardNo",
+            "nullable": true
+          },
+          "voucherMemberID": {
+            "type": "string",
+            "description": "VoucherMemberID — the specific issued voucher to redeem",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "RedeemVoucherV2InputViewModel"
+      },
+      "RegOTPConfirmationV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "mobileNo": {
+            "type": "string",
+            "description": "MobileNo",
+            "nullable": true
+          },
+          "emailAddress": {
+            "type": "string",
+            "description": "EmailAddress",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "description": "Password",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name",
+            "nullable": true
+          },
+          "birthdate": {
+            "type": "string",
+            "description": "Birthdate",
+            "nullable": true
+          },
+          "otp": {
+            "type": "string",
+            "description": "OTP",
+            "nullable": true
+          },
+          "clientID": {
+            "type": "string",
+            "description": "ClientID - the loyalty client this account belongs to",
+            "nullable": true
+          },
+          "cardTypeID": {
+            "type": "string",
+            "description": "CardTypeID - the card type to auto-register on signup",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "RegOTPConfirmationV2InputViewModel"
+      },
+      "SendRegOTPOutputViewModel": {
+        "type": "object",
+        "properties": {
+          "mobileNo": {
+            "type": "string",
+            "description": "MobileNo",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "SendRegOTPOutputViewModel"
+      },
+      "SendRegOTPOutputViewModelApiOutputViewModel": {
+        "required": [
+          "responseCode",
+          "responseMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Response Code"
+          },
+          "responseMessage": {
+            "$ref": "#/components/schemas/ApiResponseMessageViewModel"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/SendRegOTPOutputViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SendRegOTPV2InputViewModel": {
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string",
+            "description": "EmailAddress",
+            "nullable": true
+          },
+          "mobileNo": {
+            "type": "string",
+            "description": "MobileNo",
+            "nullable": true
+          },
+          "clientID": {
+            "type": "string",
+            "description": "ClientID",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "SendRegOTPV2InputViewModel"
+      }
+    },
+    "securitySchemes": {
+      "ApiKey": {
+        "type": "apiKey",
+        "description": "Enter your API key in the header as the value for Authorization-Key to authenticate requests. Example: `Authorization-Key: your-api-key`.",
+        "name": "Authorization-Key",
+        "in": "header"
+      },
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Enter your Authorization in the header as the value for Authorization to authenticate requests. Example: `Authorization: your-token`.",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKey": [ ],
+      "Bearer": [ ]
+    }
+  ]
+}

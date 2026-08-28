@@ -1,0 +1,286 @@
+/* ── Page: light background, card floats over partial green hero ── */
+.login-page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* ── Partial green hero with curved bottom ── */
+.login-hero {
+  background: linear-gradient(170deg, var(--primary-dark) 0%, var(--primary) 65%, var(--primary-light) 100%);
+  padding: 96px 28px 80px;
+  border-radius: 0 0 36px 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative subtle circles inside hero */
+.login-hero::before {
+  content: '';
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  top: -100px;
+  right: -60px;
+  pointer-events: none;
+}
+
+.login-hero::after {
+  content: '';
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  bottom: -60px;
+  left: -30px;
+  pointer-events: none;
+}
+
+/* ── Hero logo wordmark ── */
+.login-hero-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+}
+.login-hero-logo-line1 {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #fff;
+}
+.login-hero-logo-line2 {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #fff;
+}
+
+.login-hero-sub {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  margin-top: 16px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Floating card: overlaps the curved hero bottom ── */
+.login-card {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 28px 24px 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14), 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin: -32px 16px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.login-card-hint {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+/* ── Phone input row ── */
+.phone-input-row {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  overflow: hidden;
+  transition: border-color 0.18s;
+}
+
+.phone-input-row:focus-within {
+  border-color: var(--primary);
+}
+
+.phone-input-row--error {
+  border-color: var(--error) !important;
+  background: #FEF2F2;
+}
+
+.phone-prefix {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 13px 12px 13px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg);
+  border-right: 1.5px solid var(--border);
+  white-space: nowrap;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.phone-prefix svg {
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.phone-input {
+  flex: 1;
+  padding: 13px 16px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-family: var(--font);
+  color: var(--text);
+  background: transparent;
+  min-width: 0;
+}
+
+.phone-input::placeholder {
+  color: var(--text-light);
+}
+
+/* ── Password input with left lock icon ── */
+.input-row--with-icon {
+  position: relative;
+}
+
+.input-icon-left {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.form-input--icon {
+  padding-left: 42px;
+}
+
+/* ── Password meta: hint + forgot link ── */
+.password-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.field-hint {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+/* ── Terms of service ── */
+.login-tos {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+.login-tos .text-link {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* ── Sign-up link below card ── */
+.login-signup-link {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.login-signup-anchor {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* ── Inline field validation ── */
+.form-input--error {
+  border-color: var(--error) !important;
+  background: #FEF2F2;
+}
+
+.field-error {
+  font-size: 12px;
+  color: var(--error);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.field-error::before {
+  content: '⚠';
+  font-size: 11px;
+}
+
+/* ═══════════════════════════════════════════════
+   DESKTOP  ≥ 768px
+═══════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .login-page {
+    flex-direction: row;
+    align-items: stretch;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .login-hero {
+    width: 45%;
+    flex-shrink: 0;
+    border-radius: 0 36px 36px 0;
+    padding: 0 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .login-hero::before,
+  .login-hero::after { display: none; }
+
+  .login-hero-logo-line1,
+  .login-hero-logo-line2 { font-size: 52px; }
+  .login-hero-sub  { font-size: 17px; }
+
+  /* Right panel wraps card + signup link vertically */
+  .login-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 64px;
+    overflow-y: auto;
+    background: var(--bg);
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 460px;
+    border-radius: 20px;
+    margin: 0;
+  }
+
+  .login-signup-link {
+    margin-top: 20px;
+    color: var(--text-secondary);
+    width: 100%;
+    max-width: 460px;
+    text-align: center;
+  }
+
+  .login-signup-anchor { color: var(--primary); }
+}
