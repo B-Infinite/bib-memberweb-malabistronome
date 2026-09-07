@@ -81,7 +81,7 @@ function validateForm(form, agreedToTerms) {
   else if (getStrength(form.password) < 4)         errors.password        = 'Password does not meet all requirements.';
   if (!form.confirmPassword)                       errors.confirmPassword = 'Please confirm your password.';
   else if (form.password !== form.confirmPassword) errors.confirmPassword = 'Passwords do not match.';
-  if (!agreedToTerms)                              errors.terms           = 'You must agree to the Terms & Conditions and KevW Kopitam Agreement to continue.';
+  if (!agreedToTerms)                              errors.terms           = 'You must agree to the Terms & Conditions and Mala Bistronome Agreement to continue.';
   return errors;
 }
 
@@ -275,7 +275,7 @@ export default function Signup() {
         </Link>
         <div>
           <h1 className="signup-title">Create Account</h1>
-          <p className="signup-subtitle">Join KevW Kopitam Member Portal</p>
+          <p className="signup-subtitle">Join Mala Bistronome Member Portal</p>
         </div>
       </div>
 
@@ -480,7 +480,7 @@ export default function Signup() {
                 </a>{' '}
                 and{' '}
                 <a href="#" className="terms-link" onClick={(e) => e.preventDefault()}>
-                  KevW Kopitam Agreement
+                  Mala Bistronome Agreement
                 </a>
               </span>
             </label>

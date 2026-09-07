@@ -65,18 +65,18 @@
   border: 2px solid var(--surface);
 }
 
-/* ── Green points banner ── */
+/* ── Points banner ── */
 .points-banner {
   margin: 0 16px 16px;
   border-radius: 16px;
   padding: 18px 22px 20px;
-  background: linear-gradient(135deg, #142419 0%, #1F3C28 55%, #285838 100%);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--primary-light) 100%);
   position: relative;
   overflow: hidden;
   color: white;
   box-shadow:
-    0 4px 18px rgba(31, 60, 40, 0.28),
-    0 2px 6px rgba(31, 60, 40, 0.12);
+    0 4px 18px rgba(139, 46, 46, 0.28),
+    0 2px 6px rgba(139, 46, 46, 0.12);
 }
 
 .pb-bubble {
@@ -112,12 +112,24 @@
   z-index: 1;
 }
 
-.pb-points-row {
+.pb-metrics-row {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.pb-metric {
   display: flex;
   align-items: baseline;
   gap: 7px;
-  position: relative;
-  z-index: 1;
+}
+
+.pb-metric-divider {
+  align-self: stretch;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .pb-value {
@@ -132,6 +144,16 @@
   font-size: 17px;
   font-weight: 500;
   opacity: 0.65;
+}
+
+/* Two metrics side by side (all-type cards) — shrink so both fit comfortably */
+.pb-metrics-row--split .pb-value {
+  font-size: 26px;
+  letter-spacing: -0.5px;
+}
+
+.pb-metrics-row--split .pb-unit {
+  font-size: 13px;
 }
 
 /* ═══════════════════════════════════════════════

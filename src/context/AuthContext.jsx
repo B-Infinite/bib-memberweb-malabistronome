@@ -58,12 +58,14 @@ function buildUserObject({ loginData = {}, profileData = {}, pointData = {} }) {
     maritalStatus:    profileData.maritalStatus,
     carPlateNo:       profileData.carPlateNo,
     canEditBirthdate: profileData.canEditBirthdate,
+    clientTypeID:     profileData.clientTypeID ?? null,
 
     // From CardPointGetV2
-    points:          pointData.balPoint ? Number(pointData.balPoint) : 0,
-    pointsExpiry:    pointData.expiryDate      ?? null,
-    balCash:         pointData.balCash         ?? null,
-    pointToCashRate: pointData.pointToCashRate ?? null,
+    points:            pointData.balPoint ? Number(pointData.balPoint) : 0,
+    pointsExpiry:      pointData.expiryDate        ?? null,
+    balCash:           pointData.balCash           ?? null,
+    pointToCashRate:   pointData.pointToCashRate   ?? null,
+    cardTypeFeatureID: pointData.cardTypeFeatureID ?? null,
 
     // Convenience aliases
     phone: profileData.mobileNo || loginData.mobileNo,

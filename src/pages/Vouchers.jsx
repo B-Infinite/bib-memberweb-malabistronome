@@ -19,8 +19,16 @@ const PLACEHOLDER_BG = 'linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%)';
  * Map a CardGetGiftListV2 gift object to the shape VoucherCard / VoucherModal expect.
  * API fields: giftID, giftName, description, validPeriod, point, discountPoint,
  *             credit, discountCredit, giftImage, expireDate, tnC, giftCatagoryID, brandImage
+ *
+ * discountPoint/discountCredit, when set, override the base point/credit cost —
+ * matches the backend's own priority in RedeemGiftV2 (requirePoint/requireCredit).
  */
 function mapGift(g) {
+  const point         = Number(g.point)          || 0;
+  const discountPoint = Number(g.discountPoint)  || 0;
+  const credit        = Number(g.credit)         || 0;
+  const discountCredit = Number(g.discountCredit) || 0;
+
   return {
     id:          String(g.giftID),
     title:       g.giftName       || 'Gift',
@@ -28,7 +36,8 @@ function mapGift(g) {
     image:       g.giftImage      || '',
     expiry:      g.expireDate     || '',
     terms:       g.tnC            || '',
-    pointsCost:  Number(g.point)  || 0,
+    pointsCost:  discountPoint  > 0 ? discountPoint  : point,
+    creditCost:  discountCredit > 0 ? discountCredit : credit,
     brandImage:  g.brandImage     || '',
     // No 'status' — identifies this as a catalogue item (not owned)
   };
@@ -126,8 +135,12 @@ function VoucherCard({ voucher, canAfford = true, isUsed = false, isExpired = fa
             }
           </span>
         )}
-        {!isUsed && !isExpired && voucher.pointsCost > 0 && (
-          <span className="voucher-card-pts">{voucher.pointsCost.toLocaleString()} pts</span>
+        {!isUsed && !isExpired && (voucher.pointsCost > 0 || voucher.creditCost > 0) && (
+          <span className="voucher-card-pts">
+            {voucher.pointsCost > 0 && `${voucher.pointsCost.toLocaleString()} pts`}
+            {voucher.pointsCost > 0 && voucher.creditCost > 0 && ' + '}
+            {voucher.creditCost > 0 && `${voucher.creditCost.toFixed(2)} CR`}
+          </span>
         )}
         {(isUsed || isExpired) && voucher.code && (
           <span className="voucher-card-code">{voucher.code}</span>
@@ -186,8 +199,9 @@ export default function Vouchers() {
   const [catLoading, setCatLoading] = useState(catalogueCache === null);
   const [catError, setCatError]     = useState('');
 
-  // Live points (deducted after redemption)
+  // Live points / credit (deducted after redemption)
   const [points, setPoints] = useState(() => user?.points ?? 0);
+  const [cash, setCash]     = useState(() => Number(user?.balCash) || 0);
 
   // Active (redeemed) vouchers from API
   const [activeVouchers, setActiveVouchers]     = useState(() => activeCache ?? []);
@@ -252,10 +266,14 @@ export default function Vouchers() {
       .finally(() => setHistoryLoading(false));
   }, [cardNo]);
 
-  // Keep local points in sync when user context updates
+  // Keep local points / cash in sync when user context updates
   useEffect(() => {
     if (user?.points !== undefined) setPoints(user.points);
   }, [user?.points]);
+
+  useEffect(() => {
+    if (user?.balCash !== undefined) setCash(Number(user.balCash) || 0);
+  }, [user?.balCash]);
 
   // ── Redeem handler — called by VoucherModal ─────────────────────────────────
   const handleRedeem = async (voucher) => {
@@ -268,6 +286,7 @@ export default function Vouchers() {
 
     // Optimistic local deduction for instant feedback on this page
     setPoints((prev) => prev - voucher.pointsCost);
+    setCash((prev) => prev - voucher.creditCost);
 
     // Sync the real balance back into the auth context in the background
     refreshUserData().catch(() => { /* non-fatal */ });
@@ -380,7 +399,7 @@ export default function Vouchers() {
                   <VoucherCard
                     key={voucher.id}
                     voucher={voucher}
-                    canAfford={points >= voucher.pointsCost}
+                    canAfford={points >= voucher.pointsCost && cash >= voucher.creditCost}
                     onClick={() => setSelectedVoucher(voucher)}
                   />
                 ))}

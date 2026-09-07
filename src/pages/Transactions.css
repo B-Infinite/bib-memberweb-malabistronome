@@ -92,8 +92,37 @@
   padding: 10px 16px;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 10px;
   flex-shrink: 0;
+}
+
+/* ── Category tabs (Point vs Credit) — only shown for all-type cards ── */
+.tx-category-tabs {
+  display: flex;
+  gap: 0;
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.tx-category-tab {
+  flex: 1;
+  padding: 9px 8px;
+  border: none;
+  background: none;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tx-category-tab.active {
+  background: var(--accent);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(91, 122, 66, 0.3);
 }
 
 /* ── Scrollable transaction list ── */
@@ -134,7 +163,7 @@
   background: var(--primary);
   color: white;
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(31, 60, 40, 0.3);
+  box-shadow: 0 2px 8px rgba(139, 46, 46, 0.3);
 }
 
 /* ── Date group ── */
@@ -351,6 +380,7 @@
     padding: 14px 36px;
   }
 
+  .tx-category-tabs,
   .tx-type-tabs {
     max-width: 400px;
   }

@@ -90,7 +90,7 @@
 
 .listall-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(31, 60, 40, 0.14);
+  box-shadow: 0 8px 28px rgba(139, 46, 46, 0.14);
 }
 
 .listall-card:active { transform: scale(0.99); }

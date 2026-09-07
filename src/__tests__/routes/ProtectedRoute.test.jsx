@@ -32,8 +32,8 @@ describe('ProtectedRoute', () => {
   });
 
   it('renders children when user is authenticated', () => {
-    localStorage.setItem('kevw_kopitiam__auth_token', 'token');
-    localStorage.setItem('kevw_kopitiam__user', JSON.stringify({ firstName: 'Sarun' }));
+    localStorage.setItem('mala_bistronome__auth_token', 'token');
+    localStorage.setItem('mala_bistronome__user', JSON.stringify({ firstName: 'Sarun' }));
 
     renderRoute('/protected');
 
