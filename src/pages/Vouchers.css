@@ -165,7 +165,7 @@
   background: var(--primary);
   color: white;
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(31, 60, 40, 0.3);
+  box-shadow: 0 2px 8px rgba(139, 46, 46, 0.3);
 }
 
 .vouchers-tab-pill-badge {
@@ -297,7 +297,7 @@
 
 .voucher-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(31, 60, 40, 0.14);
+  box-shadow: 0 8px 28px rgba(139, 46, 46, 0.14);
 }
 
 .voucher-card:active { transform: scale(0.98); }
@@ -378,7 +378,7 @@
   font-size: 11px;
   font-weight: 600;
   color: var(--primary);
-  background: rgba(31, 60, 40, 0.08);
+  background: rgba(139, 46, 46, 0.08);
   border-radius: 6px;
   padding: 2px 8px;
   align-self: flex-start;
@@ -469,7 +469,7 @@
     border-top: none;
     border-right: 1.5px solid var(--border);
     padding: 0 0 24px;
-    box-shadow: 2px 0 16px rgba(31, 60, 40, 0.06);
+    box-shadow: 2px 0 16px rgba(139, 46, 46, 0.06);
     gap: 0;
     overflow-y: auto;
     background: var(--surface);
@@ -490,7 +490,7 @@
 
   .bottom-nav-item.active,
   .bottom-nav-item:hover {
-    background: rgba(31, 60, 40, 0.07);
+    background: rgba(139, 46, 46, 0.07);
     color: var(--primary);
   }
 

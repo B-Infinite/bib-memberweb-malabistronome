@@ -1,22 +1,20 @@
 import './MembershipCard.css';
 
-const TIER_GRADIENTS = {
-  Bronze:   'linear-gradient(135deg, #5D3A1A 0%, #8B5E3C 50%, #C4894C 100%)',
-  Silver:   'linear-gradient(135deg, #374151 0%, #6B7280 50%, #9CA3AF 100%)',
-  Gold:     'linear-gradient(135deg, #142419 0%, #1F3C28 55%, #285838 100%)',
-  Platinum: 'linear-gradient(135deg, #1F3C28 0%, #285838 50%, #D8A464 100%)',
-};
-
-const TIER_ACCENT = {
-  Bronze:   '#C4894C',
-  Silver:   '#9CA3AF',
-  Gold:     '#D8A464',
-  Platinum: '#D8A464',
+// Card color is driven by CardTypeFeatureID (from CardPointGetV2):
+// 0 = points + cash (all type), 1 = points only, 2 = cash only.
+const FEATURE_GRADIENTS = {
+  0: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--accent) 100%)',
+  1: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--primary-light) 100%)',
+  2: 'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%)',
 };
 
 export default function MembershipCard({ member, merchantName, onShowQR, onOutlets }) {
-  const tier = member?.tier || 'Gold';
-  const gradient = TIER_GRADIENTS[tier] || TIER_GRADIENTS.Gold;
+  const feature  = member?.cardTypeFeatureID ?? 1;
+  const gradient = FEATURE_GRADIENTS[feature] ?? FEATURE_GRADIENTS[1];
+
+  const showPoints = feature !== 2;
+  const showCash   = feature === 0 || feature === 2;
+  const displayCash = member?.balCash != null ? Number(member.balCash) : 0;
 
   const expiryLabel = member?.pointsExpiry
     ? new Date(member.pointsExpiry).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
@@ -30,16 +28,26 @@ export default function MembershipCard({ member, merchantName, onShowQR, onOutle
 
       {/* Top row — brand only */}
       <div className="card-top">
-        <span className="card-brand-label">{merchantName || 'KevW Kopitam'}</span>
+        <span className="card-brand-label">{merchantName || 'Mala Bistronome'}</span>
       </div>
 
-      {/* Points */}
+      {/* Points / Cash */}
       <div className="card-points-block">
-        <div className="card-points-main">
-          <span className="card-points-value">
-            {(member?.points || 0).toLocaleString()}
-          </span>
-          <span className="card-points-unit">pts</span>
+        <div className="card-points-metrics">
+          {showPoints && (
+            <div className="card-points-main">
+              <span className="card-points-value">
+                {(member?.points || 0).toLocaleString()}
+              </span>
+              <span className="card-points-unit">pts</span>
+            </div>
+          )}
+          {showCash && (
+            <div className="card-points-main">
+              <span className="card-points-value">{displayCash.toFixed(2)}</span>
+              <span className="card-points-unit">CR</span>
+            </div>
+          )}
         </div>
         {expiryLabel && (
           <span className="card-points-expiry">Expires {expiryLabel}</span>

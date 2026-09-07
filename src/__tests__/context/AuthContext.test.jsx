@@ -48,7 +48,7 @@ describe('AuthContext', () => {
 
   it('hydrates user from localStorage on mount', () => {
     const stored = { name: 'Ahmad', mobileNo: '60123456789' };
-    localStorage.setItem('kevw_kopitiam__user', JSON.stringify(stored));
+    localStorage.setItem('mala_bistronome__user', JSON.stringify(stored));
 
     renderAuth();
 
@@ -77,8 +77,8 @@ describe('AuthContext', () => {
     expect(user.mobileNo).toBe('60123456789');
     expect(user.points).toBe(12450);
     expect(user.accountNumber).toBe('ACC001');
-    expect(localStorage.getItem('kevw_kopitiam__auth_token')).toBe('tok123');
-    expect(localStorage.getItem('kevw_kopitiam__mobileNo')).toBe('60123456789');
+    expect(localStorage.getItem('mala_bistronome__auth_token')).toBe('tok123');
+    expect(localStorage.getItem('mala_bistronome__mobileNo')).toBe('60123456789');
   });
 
   it('login() sets error state when ProfileLogin fails', async () => {
@@ -98,14 +98,14 @@ describe('AuthContext', () => {
     act(() => { screen.getByText('mockLogin').click(); });
 
     expect(screen.getByTestId('user').textContent).toContain('Demo User');
-    expect(localStorage.getItem('kevw_kopitiam__auth_token')).toBe('demo-token');
-    expect(localStorage.getItem('kevw_kopitiam__mobileNo')).toBe('60123456789');
+    expect(localStorage.getItem('mala_bistronome__auth_token')).toBe('demo-token');
+    expect(localStorage.getItem('mala_bistronome__mobileNo')).toBe('60123456789');
   });
 
   it('logout() clears session and nullifies user', async () => {
-    localStorage.setItem('kevw_kopitiam__auth_token', 'tok');
-    localStorage.setItem('kevw_kopitiam__mobileNo', '60123456789');
-    localStorage.setItem('kevw_kopitiam__user', JSON.stringify({ name: 'Ahmad', mobileNo: '60123456789' }));
+    localStorage.setItem('mala_bistronome__auth_token', 'tok');
+    localStorage.setItem('mala_bistronome__mobileNo', '60123456789');
+    localStorage.setItem('mala_bistronome__user', JSON.stringify({ name: 'Ahmad', mobileNo: '60123456789' }));
 
     renderAuth();
     await waitFor(() => { expect(screen.getByTestId('user').textContent).toContain('Ahmad'); });
@@ -113,8 +113,8 @@ describe('AuthContext', () => {
     await act(async () => { screen.getByText('logout').click(); });
 
     await waitFor(() => { expect(screen.getByTestId('user').textContent).toBe('null'); });
-    expect(localStorage.getItem('kevw_kopitiam__auth_token')).toBeNull();
-    expect(localStorage.getItem('kevw_kopitiam__mobileNo')).toBeNull();
-    expect(localStorage.getItem('kevw_kopitiam__user')).toBeNull();
+    expect(localStorage.getItem('mala_bistronome__auth_token')).toBeNull();
+    expect(localStorage.getItem('mala_bistronome__mobileNo')).toBeNull();
+    expect(localStorage.getItem('mala_bistronome__user')).toBeNull();
   });
 });

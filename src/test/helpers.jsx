@@ -20,8 +20,8 @@ export function renderWithProviders(ui, { initialEntries = ['/'], ...renderOptio
 
 /** Seed localStorage so ProtectedRoute treats the user as logged in. */
 export function seedAuth(user = mockUser) {
-  localStorage.setItem('kevw_kopitiam__auth_token', 'mock-token');
-  localStorage.setItem('kevw_kopitiam__user', JSON.stringify(user));
+  localStorage.setItem('mala_bistronome__auth_token', 'mock-token');
+  localStorage.setItem('mala_bistronome__user', JSON.stringify(user));
 }
 
 export const mockUser = {

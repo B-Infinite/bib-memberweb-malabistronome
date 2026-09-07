@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import logo from '../assets/logo_mala.webp';
 
 import './Login.css';
 
@@ -63,13 +64,14 @@ export default function Login() {
 
       {/* ── Hero: logo + headline ── */}
       <div className="login-hero">
+        <div className="login-hero-blob login-hero-blob--accent" />
         <span className="login-hero-logo">
-          <span className="login-hero-logo-line1">Mala</span>
-          <span className="login-hero-logo-line2">Bistronome</span>
+          <img src={logo} alt="Mala Bistronome" className="login-hero-logo-img" />
         </span>
-        {import.meta.env.VITE_LOGIN_TAGLINE && (
-          <p className="login-hero-sub">{import.meta.env.VITE_LOGIN_TAGLINE}</p>
-        )}
+        <h1 className="login-hero-title">Welcome Back</h1>
+        <p className="login-hero-sub">
+          {import.meta.env.VITE_LOGIN_TAGLINE || 'Sign in to your Mala Bistronome membership'}
+        </p>
       </div>
 
       {/* ── Right side: floating card + signup link ── */}

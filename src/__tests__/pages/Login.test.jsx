@@ -25,8 +25,7 @@ function renderLogin(initialEntries = ['/login']) {
 describe('Login page — rendering', () => {
   it('renders brand name', () => {
     renderLogin();
-    // "KevW Kopitam" and "Courts" both appear via .login-wordmark
-    expect(screen.getByText('Courts')).toBeInTheDocument();
+    expect(screen.getByAltText('Mala Bistronome')).toBeInTheDocument();
   });
 
   it('renders phone number field with +60 prefix', () => {
@@ -45,9 +44,9 @@ describe('Login page — rendering', () => {
     expect(screen.getByRole('button', { name: /continue/i })).toBeInTheDocument();
   });
 
-  it('renders "Join KevW Kopitam" signup link', () => {
+  it('renders "Join Mala Bistronome" signup link', () => {
     renderLogin();
-    expect(screen.getByText('Join KevW Kopitam')).toBeInTheDocument();
+    expect(screen.getByText('Join Mala Bistronome')).toBeInTheDocument();
   });
 
   it('renders "Forgot password?" link', () => {
@@ -142,7 +141,7 @@ describe('Login page — successful flow', () => {
     await user.type(screen.getByPlaceholderText('Enter your password'), 'password123');
     await user.click(screen.getByRole('button', { name: /continue/i }));
     await waitFor(() => {
-      expect(localStorage.getItem('kevw_kopitiam__mobileNo')).toBe('60123456789');
+      expect(localStorage.getItem('mala_bistronome__mobileNo')).toBe('60123456789');
     });
   });
 });

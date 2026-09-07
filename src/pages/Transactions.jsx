@@ -104,6 +104,16 @@ export default function Transactions() {
   const [page, setPage]           = useState(1);
   const [activeType, setActiveType] = useState('all'); // 'all' | 'earn' | 'redeem'
 
+  // CardTypeFeatureID: 0 = points + cash (all type), 1 = points only, 2 = cash only.
+  const cardFeature   = user?.cardTypeFeatureID ?? 1;
+  const showCategoryTabs = cardFeature === 0;
+  const [activeCategory, setActiveCategory] = useState(cardFeature === 2 ? 'credit' : 'point'); // 'point' | 'credit'
+
+  // Which category to filter transactions by: the user's tab choice when both
+  // types exist, otherwise the single type this card feature is locked to —
+  // always filter (never skip it), since the API tags every row's category.
+  const filterCategory = showCategoryTabs ? activeCategory : (cardFeature === 2 ? 'credit' : 'point');
+
   const cardNo    = user?.accountNumber || user?.cardNo || '';
   const cardTypeID = CARD_TYPE_ID;
 
@@ -149,10 +159,14 @@ export default function Transactions() {
   };
 
   // ── Filter + group ──────────────────────────────────────────────────────────
+  const byCategory = useMemo(() => {
+    return txList.filter((tx) => (tx.transactionCategory || '').toLowerCase() === filterCategory);
+  }, [txList, filterCategory]);
+
   const filtered = useMemo(() => {
-    if (activeType === 'all') return txList;
-    return txList.filter((tx) => getTxType(tx) === activeType);
-  }, [txList, activeType]);
+    if (activeType === 'all') return byCategory;
+    return byCategory.filter((tx) => getTxType(tx) === activeType);
+  }, [byCategory, activeType]);
 
   const grouped = useMemo(() => groupByDate(filtered), [filtered]);
 
@@ -163,10 +177,26 @@ export default function Transactions() {
 
       {/* ── Filter tabs ── */}
       <div className="tx-filters">
+        {showCategoryTabs && (
+          <div className="tx-category-tabs">
+            {[
+              { id: 'point',  label: 'Point'  },
+              { id: 'credit', label: 'Credit' },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                className={`tx-category-tab${activeCategory === tab.id ? ' active' : ''}`}
+                onClick={() => setActiveCategory(tab.id)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        )}
         <div className="tx-type-tabs">
           {[
             { id: 'all',    label: 'All Transactions' },
-            { id: 'earn',   label: 'Earned'           },
+            { id: 'earn',   label: activeCategory === 'credit' ? 'Top Up' : 'Earned' },
             { id: 'redeem', label: 'Redeemed'         },
           ].map((tab) => (
             <button
@@ -216,6 +246,7 @@ export default function Transactions() {
               {txs.map((tx, idx) => {
                 const type = getTxType(tx);
                 const pts  = parseFloat(tx.amountNumber);
+                const isCredit = (tx.transactionCategory || '').toLowerCase() === 'credit';
                 const time = formatTime(bestDatetime(tx));
                 return (
                   <div key={idx} className="tx-row">
@@ -236,10 +267,10 @@ export default function Transactions() {
                     </div>
                     <div className={`tx-row-points${type === 'earn' ? ' earn' : ' redeem'}`}>
                       {!isNaN(pts)
-                        ? <>{type === 'earn' ? '+' : '−'}{Math.abs(pts).toLocaleString()}</>
+                        ? <>{type === 'earn' ? '+' : '−'}{isCredit ? Math.abs(pts).toFixed(2) : Math.abs(pts).toLocaleString()}</>
                         : tx.amount || '—'
                       }
-                      <span className="tx-row-pts-label">pts</span>
+                      <span className="tx-row-pts-label">{isCredit ? 'CR' : 'pts'}</span>
                     </div>
                   </div>
                 );

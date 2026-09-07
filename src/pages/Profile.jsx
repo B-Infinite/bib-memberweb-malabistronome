@@ -68,6 +68,7 @@ export default function Profile() {
           <div className="profile-btn-row">
             <button className="profile-edit-btn" onClick={() => navigate('/edit-profile')}>Edit Info</button>
             <button className="profile-edit-btn profile-edit-btn--secondary" onClick={() => navigate('/change-password')}>Change Password</button>
+            <button className="profile-edit-btn profile-edit-btn--secondary" onClick={() => navigate('/change-pin')}>Change PIN</button>
           </div>
         </div>
 

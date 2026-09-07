@@ -14,7 +14,7 @@ export const CARD_TYPE_ID = String(import.meta.env.VITE_CARD_TYPE_ID || '');
  *
  * Response: { mobileNo, emailAddress, name, birthdate, canEditBirthdate,
  *             ic, address, state, country, gender, race, designation,
- *             maritalStatus, accountNumber, carPlateNo }
+ *             maritalStatus, accountNumber, carPlateNo, clientTypeID }
  */
 export const profileGetDetail = () =>
   client.post('/MobileProfile/ProfileGetDetailV2', {});
@@ -26,6 +26,24 @@ export const profileGetDetail = () =>
  */
 export const profileChangePassword = (oldPassword, newPassword) =>
   client.post('/MobileProfile/ProfileChangePasswordV2', { oldPassword, newPassword });
+
+/**
+ * Change PIN (authenticated user).
+ * @param {string} oldPin - current 6-digit numeric PIN
+ * @param {string} newPin - new 6-digit numeric PIN
+ */
+export const changePin = (oldPin, newPin) =>
+  client.post('/Pin/ChangePin', { oldPin, newPin });
+
+/**
+ * Reset PIN (authenticated user) — sends a new system-generated 6-digit PIN via SMS
+ * to the member's own registered number. No body needed — identity comes from the
+ * Authorization header, not from client input (the mobile number is never client-supplied,
+ * so nobody can trigger a reset for someone else's account).
+ * Server-side rate limit: 3 requests per 10 minutes.
+ */
+export const resetPin = () =>
+  client.post('/Pin/ResetPin', {});
 
 /**
  * Send OTP to verify a profile update (phone / email change).
@@ -55,7 +73,9 @@ export const deleteAccount = () =>
  * Get current point balance for a card.
  * V2: no mobileNo/password needed.
  *
- * Response: { balPoint, balPointInCash, balCash, expiryDate, pointToCashRate }
+ * Response: { balPoint, balPointInCash, balCash, expiryDate, pointToCashRate,
+ *             cardTypeFeatureID } — cardTypeFeatureID: 0 = points + cash (all type),
+ *             1 = points only, 2 = cash only.
  *
  * @param {string} cardNo       - member account number
  * @param {string} [cardTypeID]

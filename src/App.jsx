@@ -12,6 +12,7 @@ import Vouchers from './pages/Vouchers';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import ChangePassword from './pages/ChangePassword';
+import ChangePin from './pages/ChangePin';
 import News from './pages/News';
 import Outlets from './pages/Outlets';
 import Tenants from './pages/Tenants';
@@ -64,6 +65,7 @@ export default function App() {
           />
           <Route path="/edit-profile"     element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
           <Route path="/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
+          <Route path="/change-pin" element={<ProtectedRoute><ChangePin /></ProtectedRoute>} />
           <Route path="/news"    element={<ProtectedRoute><News /></ProtectedRoute>} />
           <Route path="/outlets" element={<ProtectedRoute><Outlets /></ProtectedRoute>} />
           <Route path="/tenants" element={<ProtectedRoute><Tenants /></ProtectedRoute>} />

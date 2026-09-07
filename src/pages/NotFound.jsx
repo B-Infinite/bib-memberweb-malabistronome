@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.webp';
+import logo from '../assets/logo_mala.webp';
 import './NotFound.css';
 
 export default function NotFound() {
@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <div className="nf-page">
       <div className="nf-card">
-        <img src={logo} alt="KevW Kopitam" className="nf-logo" />
+        <img src={logo} alt="Mala Bistronome" className="nf-logo" />
 
         <div className="nf-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" width="40" height="40">
