@@ -17,8 +17,8 @@ describe('API client', () => {
   // ── Credential injection ────────────────────────────────────────────────────
 
   it('injects mobileNo + password into POST request body', async () => {
-    localStorage.setItem('kevw_kopitiam__mobileNo', '60123456789');
-    localStorage.setItem('kevw_kopitiam__auth_token', 'session-token');
+    localStorage.setItem('mala_bistronome__mobileNo', '60123456789');
+    localStorage.setItem('mala_bistronome__auth_token', 'session-token');
     mock.onPost('/test').reply(200, { responseCode: '00', responseData: {} });
 
     await client.post('/test', { otherField: 'value' });
@@ -30,8 +30,8 @@ describe('API client', () => {
   });
 
   it('explicit body fields take precedence over injected credentials', async () => {
-    localStorage.setItem('kevw_kopitiam__mobileNo', 'injected-no');
-    localStorage.setItem('kevw_kopitiam__auth_token', 'injected-token');
+    localStorage.setItem('mala_bistronome__mobileNo', 'injected-no');
+    localStorage.setItem('mala_bistronome__auth_token', 'injected-token');
     mock.onPost('/test').reply(200, { responseCode: '00', responseData: {} });
 
     await client.post('/test', { mobileNo: 'caller-supplied', password: 'caller-pw' });
@@ -42,8 +42,8 @@ describe('API client', () => {
   });
 
   it('does NOT inject credentials into GET requests', async () => {
-    localStorage.setItem('kevw_kopitiam__mobileNo', '60123456789');
-    localStorage.setItem('kevw_kopitiam__auth_token', 'session-token');
+    localStorage.setItem('mala_bistronome__mobileNo', '60123456789');
+    localStorage.setItem('mala_bistronome__auth_token', 'session-token');
     mock.onGet('/test').reply(200, {});
 
     await client.get('/test');
@@ -85,9 +85,9 @@ describe('API client', () => {
   // ── 401 handling ────────────────────────────────────────────────────────────
 
   it('clears session storage and redirects to /login on 401', async () => {
-    localStorage.setItem('kevw_kopitiam__auth_token', 'expired-token');
-    localStorage.setItem('kevw_kopitiam__mobileNo', '60123456789');
-    localStorage.setItem('kevw_kopitiam__user', JSON.stringify({ name: 'Test' }));
+    localStorage.setItem('mala_bistronome__auth_token', 'expired-token');
+    localStorage.setItem('mala_bistronome__mobileNo', '60123456789');
+    localStorage.setItem('mala_bistronome__user', JSON.stringify({ name: 'Test' }));
 
     Object.defineProperty(window, 'location', { writable: true, value: { href: '' } });
 
@@ -95,9 +95,9 @@ describe('API client', () => {
 
     await expect(client.get('/protected')).rejects.toThrow();
 
-    expect(localStorage.getItem('kevw_kopitiam__auth_token')).toBeNull();
-    expect(localStorage.getItem('kevw_kopitiam__mobileNo')).toBeNull();
-    expect(localStorage.getItem('kevw_kopitiam__user')).toBeNull();
+    expect(localStorage.getItem('mala_bistronome__auth_token')).toBeNull();
+    expect(localStorage.getItem('mala_bistronome__mobileNo')).toBeNull();
+    expect(localStorage.getItem('mala_bistronome__user')).toBeNull();
   });
 
   it('rejects with error on 500 server error', async () => {

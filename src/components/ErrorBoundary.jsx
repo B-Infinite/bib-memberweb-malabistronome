@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import logo from '../assets/logo.webp';
+import logo from '../assets/logo_mala.webp';
 import './ErrorBoundary.css';
 
 export default class ErrorBoundary extends Component {
@@ -29,7 +29,7 @@ export default class ErrorBoundary extends Component {
       return (
         <div className="eb-page">
           <div className="eb-card">
-            <img src={logo} alt="KevW Kopitam" className="eb-logo" />
+            <img src={logo} alt="Mala Bistronome" className="eb-logo" />
 
             <div className="eb-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" width="40" height="40">

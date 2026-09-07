@@ -10,17 +10,17 @@ const baseMember = {
 
 describe('MembershipCard', () => {
   it('renders the brand / merchant name', () => {
-    render(<MembershipCard member={baseMember} merchantName="KevW Kopitam" onShowQR={() => {}} onOutlets={() => {}} />);
-    expect(screen.getByText('KevW Kopitam')).toBeInTheDocument();
+    render(<MembershipCard member={baseMember} merchantName="Mala Bistronome" onShowQR={() => {}} onOutlets={() => {}} />);
+    expect(screen.getByText('Mala Bistronome')).toBeInTheDocument();
   });
 
-  it('falls back to "KevW Kopitam" when merchantName is not supplied', () => {
+  it('falls back to "Mala Bistronome" when merchantName is not supplied', () => {
     render(<MembershipCard member={baseMember} onShowQR={() => {}} onOutlets={() => {}} />);
-    expect(screen.getByText('KevW Kopitam')).toBeInTheDocument();
+    expect(screen.getByText('Mala Bistronome')).toBeInTheDocument();
   });
 
   it('renders formatted points', () => {
-    render(<MembershipCard member={baseMember} merchantName="KevW Kopitam" onShowQR={() => {}} onOutlets={() => {}} />);
+    render(<MembershipCard member={baseMember} merchantName="Mala Bistronome" onShowQR={() => {}} onOutlets={() => {}} />);
     expect(screen.getByText('12,450')).toBeInTheDocument();
   });
 
@@ -30,7 +30,7 @@ describe('MembershipCard', () => {
   });
 
   it('shows expiry date when pointsExpiry is provided', () => {
-    render(<MembershipCard member={baseMember} merchantName="KevW Kopitam" onShowQR={() => {}} onOutlets={() => {}} />);
+    render(<MembershipCard member={baseMember} merchantName="Mala Bistronome" onShowQR={() => {}} onOutlets={() => {}} />);
     // The expiry label should be present somewhere in the card
     expect(screen.getByText(/expires/i)).toBeInTheDocument();
   });
@@ -42,14 +42,14 @@ describe('MembershipCard', () => {
 
   it('calls onShowQR when QR button is clicked', () => {
     const onShowQR = vi.fn();
-    render(<MembershipCard member={baseMember} merchantName="KevW Kopitam" onShowQR={onShowQR} onOutlets={() => {}} />);
+    render(<MembershipCard member={baseMember} merchantName="Mala Bistronome" onShowQR={onShowQR} onOutlets={() => {}} />);
     fireEvent.click(screen.getByRole('button', { name: /qr/i }));
     expect(onShowQR).toHaveBeenCalledOnce();
   });
 
   it('calls onOutlets when Outlets button is clicked', () => {
     const onOutlets = vi.fn();
-    render(<MembershipCard member={baseMember} merchantName="KevW Kopitam" onShowQR={() => {}} onOutlets={onOutlets} />);
+    render(<MembershipCard member={baseMember} merchantName="Mala Bistronome" onShowQR={() => {}} onOutlets={onOutlets} />);
     fireEvent.click(screen.getByRole('button', { name: /outlet/i }));
     expect(onOutlets).toHaveBeenCalledOnce();
   });

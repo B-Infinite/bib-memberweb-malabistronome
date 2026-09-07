@@ -48,7 +48,7 @@ export default function QRModal({ member, onClose }) {
           <span className="qr-number-value">{member?.memberNumber || '—'}</span>
         </div>
 
-        <p className="qr-hint">Present this QR code at any KevW Kopitam store</p>
+        <p className="qr-hint">Present this QR code at any Mala Bistronome store</p>
       </div>
     </div>
   );

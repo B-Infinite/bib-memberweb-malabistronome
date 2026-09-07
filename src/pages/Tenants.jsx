@@ -58,7 +58,7 @@ export default function Tenants() {
           <div className="tenants-header-text">
             <h1 className="tenants-title">Our Tenants</h1>
             {!loading && (
-              <p className="tenants-subtitle">{tenants.length} brands at KevW Kopitam</p>
+              <p className="tenants-subtitle">{tenants.length} brands at Mala Bistronome</p>
             )}
           </div>
         </div>

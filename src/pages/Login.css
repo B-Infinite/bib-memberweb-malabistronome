@@ -1,4 +1,4 @@
-/* ── Page: light background, card floats over partial green hero ── */
+/* ── Page: light background, card floats over partial brand-color hero ── */
 .login-page {
   min-height: 100vh;
   background: var(--bg);
@@ -7,7 +7,7 @@
   position: relative;
 }
 
-/* ── Partial green hero with curved bottom ── */
+/* ── Partial brand-color hero with curved bottom ── */
 .login-hero {
   background: linear-gradient(170deg, var(--primary-dark) 0%, var(--primary) 65%, var(--primary-light) 100%);
   padding: 96px 28px 80px;
@@ -41,47 +41,86 @@
   pointer-events: none;
 }
 
-/* ── Hero logo wordmark ── */
+/* Extra soft accent-green bloom, echoes the logo's green accent */
+.login-hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.login-hero-blob--accent {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(91, 122, 66, 0.35) 0%, rgba(91, 122, 66, 0) 70%);
+  top: 40%;
+  right: -80px;
+}
+
+/* ── Hero logo ── */
 .login-hero-logo {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   position: relative;
   z-index: 1;
-  line-height: 1;
+  animation: loginFadeUp 0.5s ease-out;
 }
-.login-hero-logo-line1 {
-  font-size: 42px;
-  font-weight: 800;
-  letter-spacing: -1px;
-  color: #fff;
+.login-hero-logo-img {
+  width: 104px;
+  height: 104px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
 }
-.login-hero-logo-line2 {
-  font-size: 42px;
+
+.login-hero-title {
+  font-size: 28px;
   font-weight: 800;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
   color: #fff;
+  margin: 20px 0 0;
+  position: relative;
+  z-index: 1;
+  animation: loginFadeUp 0.5s ease-out 0.05s backwards;
 }
 
 .login-hero-sub {
   font-size: 15px;
   color: rgba(255, 255, 255, 0.75);
   margin: 0;
-  margin-top: 16px;
-  font-weight: 700;
+  margin-top: 6px;
+  font-weight: 600;
   position: relative;
   z-index: 1;
+  animation: loginFadeUp 0.5s ease-out 0.1s backwards;
+}
+
+@keyframes loginFadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Floating card: overlaps the curved hero bottom ── */
 .login-card {
   background: var(--surface);
   border-radius: 20px;
-  padding: 28px 24px 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14), 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 30px 24px 24px;
+  box-shadow: 0 12px 32px rgba(94, 30, 30, 0.16), 0 2px 8px rgba(0, 0, 0, 0.06);
   margin: -32px 16px 0;
   position: relative;
   z-index: 2;
+  overflow: hidden;
+  animation: loginFadeUp 0.5s ease-out 0.15s backwards;
+}
+
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
 }
 
 .login-card-hint {
@@ -103,6 +142,7 @@
 
 .phone-input-row:focus-within {
   border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(139, 46, 46, 0.1);
 }
 
 .phone-input-row--error {
@@ -179,6 +219,17 @@
   color: var(--text-light);
 }
 
+/* ── Continue button: login-scoped lift + glow on top of the shared .btn-primary ── */
+.login-card .btn-primary {
+  box-shadow: 0 4px 14px rgba(139, 46, 46, 0.28);
+  transition: background 0.18s, transform 0.15s, box-shadow 0.15s;
+}
+
+.login-card .btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(139, 46, 46, 0.34);
+}
+
 /* ── Terms of service ── */
 .login-tos {
   font-size: 12px;
@@ -249,10 +300,11 @@
   }
 
   .login-hero::before,
-  .login-hero::after { display: none; }
+  .login-hero::after,
+  .login-hero-blob { display: none; }
 
-  .login-hero-logo-line1,
-  .login-hero-logo-line2 { font-size: 52px; }
+  .login-hero-logo-img { width: 132px; height: 132px; }
+  .login-hero-title { font-size: 40px; margin-top: 28px; }
   .login-hero-sub  { font-size: 17px; }
 
   /* Right panel wraps card + signup link vertically */

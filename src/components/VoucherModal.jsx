@@ -25,6 +25,12 @@ export default function VoucherModal({ voucher, merchant, onClose, onRedeem, onM
   const isOwned       = Boolean(voucher.status);
   const canMarkUsed   = isOwned && voucher.voucherCodeSourceID === 2;
 
+  const hasPoints = voucher.pointsCost > 0;
+  const hasCredit = voucher.creditCost > 0;
+  const redeemLabel = hasPoints && hasCredit
+    ? 'Redeem with Points & Credit'
+    : hasCredit ? 'Redeem with Credit' : 'Redeem with Points';
+
   // Lock scroll
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -111,8 +117,15 @@ export default function VoucherModal({ voucher, merchant, onClose, onRedeem, onM
 
               <div className="vm-info-row">
                 <span className="vm-validity">Valid until {formatDate(voucher.expiry)}</span>
-                {voucher.pointsCost > 0 && (
-                  <span className="vm-pts">{voucher.pointsCost.toLocaleString()} pts</span>
+                {(hasPoints || hasCredit) && (
+                  <div className="vm-pts-group">
+                    {hasPoints && (
+                      <span className="vm-pts">{voucher.pointsCost.toLocaleString()} pts</span>
+                    )}
+                    {hasCredit && (
+                      <span className="vm-pts">{voucher.creditCost.toFixed(2)} CR</span>
+                    )}
+                  </div>
                 )}
               </div>
 
@@ -149,7 +162,7 @@ export default function VoucherModal({ voucher, merchant, onClose, onRedeem, onM
                   className="vm-use-btn"
                   onClick={() => isCatalogue ? setStep('confirm') : setStep('confirm-use')}
                 >
-                  {isCatalogue ? 'Redeem with Points' : 'Mark as Used'}
+                  {isCatalogue ? redeemLabel : 'Mark as Used'}
                 </button>
               </div>
             )}
@@ -165,9 +178,19 @@ export default function VoucherModal({ voucher, merchant, onClose, onRedeem, onM
             <h3 className="vm-confirm-title">Confirm Redemption</h3>
             <p className="vm-confirm-sub">You are about to redeem</p>
             <p className="vm-confirm-voucher-name">{voucher.title}</p>
-            <div className="vm-confirm-cost">
-              <span className="vm-confirm-cost-value">{voucher.pointsCost?.toLocaleString()}</span>
-              <span className="vm-confirm-cost-unit">pts</span>
+            <div className="vm-confirm-cost-group">
+              {hasPoints && (
+                <div className="vm-confirm-cost">
+                  <span className="vm-confirm-cost-value">{voucher.pointsCost.toLocaleString()}</span>
+                  <span className="vm-confirm-cost-unit">pts</span>
+                </div>
+              )}
+              {hasCredit && (
+                <div className="vm-confirm-cost">
+                  <span className="vm-confirm-cost-value">{voucher.creditCost.toFixed(2)}</span>
+                  <span className="vm-confirm-cost-unit">CR</span>
+                </div>
+              )}
             </div>
             <p className="vm-confirm-note">This cannot be undone. The voucher will appear in My Vouchers.</p>
             {redeemError && (

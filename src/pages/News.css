@@ -93,7 +93,7 @@
 .news-filter-pill.active {
   border-color: var(--primary);
   color: var(--primary);
-  background: rgba(31, 60, 40, 0.07);
+  background: rgba(139, 46, 46, 0.07);
 }
 .news-filter-pill:hover:not(.active) {
   background: var(--bg);

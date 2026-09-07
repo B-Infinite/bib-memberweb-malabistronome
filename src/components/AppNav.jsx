@@ -60,8 +60,8 @@ export default function AppNav({ active }) {
       {/* Sidebar header — desktop only */}
       <div className="sidebar-header">
         <span className="sidebar-logo-wordmark">
-          <span className="sidebar-logo-line1">KevW</span>
-          <span className="sidebar-logo-line2">Kopitiam</span>
+          <span className="sidebar-logo-line1">Mala</span>
+          <span className="sidebar-logo-line2">Bistronome</span>
         </span>
       </div>
       <div className="sidebar-divider" />
