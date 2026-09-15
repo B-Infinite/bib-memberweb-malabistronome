@@ -115,6 +115,8 @@ export default function DetailPage() {
 
         <h1 className="detail-title">{item.title || item.name}</h1>
 
+        {isNews && item.validPeriod && <p className="detail-meta">{item.validPeriod}</p>}
+
         <p className="detail-description">{linkify(item.description)}</p>
 
         <div className="detail-divider" />

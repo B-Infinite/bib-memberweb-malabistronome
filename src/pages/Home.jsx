@@ -26,7 +26,8 @@ function mapPromoToSlide(p) {
     id:          p.promotionID,
     title:       p.promotionTitle || '',
     image:       p.promotionImage || '',
-    description: p.validPeriod   || '',
+    description:     p.validPeriod          || '', // teaser shown on the slider card
+    fullDescription: p.promotionDescription || '', // real description, shown on the detail page
     category:    p.companyName || p.clientDisplayName || '',
     bg:          'linear-gradient(135deg, #1F3C28 0%, #2D5A40 100%)',
     _raw: p,
@@ -134,7 +135,8 @@ export default function Home() {
                       // Ensure DetailPage fields are present
                       title:       slide.title,
                       image:       slide.image,
-                      description: slide.description,
+                      description: slide.fullDescription,
+                      validPeriod: slide.description,
                       date:        slide._raw?.postingDateStart ?? null,
                       category:    slide.category,
                     },

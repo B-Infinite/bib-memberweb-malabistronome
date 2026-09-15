@@ -17,13 +17,14 @@ function mapPromoToCard(p) {
       title:       p.promotionTitle       || '',
       image:       p.promotionImage       || '',
       description: p.promotionDescription || '',
+      validPeriod: p.validPeriod          || '',
       date:        p.promotionStartDate   || null,
       category:    p.companyName          || '',
       bg:          'linear-gradient(135deg, #1F3C28, #285838)',
     },
     id:          p.promotionID,
     title:       p.promotionTitle       || '',
-    description: p.promotionDescription || '',
+    validPeriod: p.validPeriod          || '', // shown as the card's teaser text
     image:       p.promotionImage       || null,
     gradient:    'linear-gradient(135deg, #1F3C28, #285838)',
     date:        p.promotionStartDate   || null,
@@ -149,8 +150,8 @@ export default function ListAll() {
                 </div>
               )}
               <h3 className="listall-card-title">{card.title}</h3>
-              {card.description && (
-                <p className="listall-card-desc">{card.description}</p>
+              {(card.validPeriod || card.description) && (
+                <p className="listall-card-desc">{card.validPeriod || card.description}</p>
               )}
             </div>
           </article>
