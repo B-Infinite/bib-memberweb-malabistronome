@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { getBrandList, CLIENT_ID } from '../api/member.api';
 import './Tenants.css';
 
+const TENANTS_TITLE = import.meta.env.VITE_TENANTS_TITLE || 'Find Us';
+
 function mapBrand(b) {
   return {
     id:          String(b.merchantHQID),
@@ -56,7 +58,7 @@ export default function Tenants() {
             </svg>
           </button>
           <div className="tenants-header-text">
-            <h1 className="tenants-title">Our Tenants</h1>
+            <h1 className="tenants-title">{TENANTS_TITLE}</h1>
             {!loading && (
               <p className="tenants-subtitle">{tenants.length} brands at Mala Bistronome</p>
             )}
