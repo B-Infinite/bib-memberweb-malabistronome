@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { sendRegOTP, regOTPConfirmation } from '../api/auth.api';
 import OtpInput from '../components/OtpInput';
+import { GENDER_OPTIONS, RACE_OPTIONS } from '../config/profileOptions';
+import useCardTypeFields from '../hooks/useCardTypeFields';
 import './Signup.css';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -99,6 +101,11 @@ export default function Signup() {
   const [passwordFocused, setPasswordFocused] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
 
+  // Gender / Race — optional, sent as codes ("M"/"F", Race.Type); shown per card type settings
+  const { showGender, showRace } = useCardTypeFields();
+  const [gender, setGender] = useState('');
+  const [race, setRace]     = useState('');
+
   // OTP state
   const [otp, setOtp]             = useState('');
   const [otpError, setOtpError]   = useState('');
@@ -173,6 +180,8 @@ export default function Signup() {
         birthdate:    buildDob(form.dobDay, form.dobMonth, form.dobYear),
         emailAddress: form.email || '',
         password:     form.password,
+        gender:       showGender ? gender : '',
+        race:         showRace   ? race   : '',
       });
 
       // Registration succeeded — log in immediately to hydrate the session
@@ -381,6 +390,46 @@ export default function Signup() {
             />
             {fieldErrors.email && <span className="field-error" role="alert">{fieldErrors.email}</span>}
           </div>
+
+          {/* Gender — shown only when the card type turns it on (CardTypeRequiredField) */}
+          {showGender && (
+            <div className="form-field">
+              <label className="form-label">
+                Gender <span className="label-optional">(optional)</span>
+              </label>
+              <select
+                className="dob-select signup-select"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                aria-label="Gender"
+              >
+                <option value="">Select gender</option>
+                {GENDER_OPTIONS.map((g) => (
+                  <option key={g.value} value={g.value}>{g.label}</option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* Race — shown only when the card type turns it on (CardTypeRequiredField) */}
+          {showRace && (
+            <div className="form-field">
+              <label className="form-label">
+                Race <span className="label-optional">(optional)</span>
+              </label>
+              <select
+                className="dob-select signup-select"
+                value={race}
+                onChange={(e) => setRace(e.target.value)}
+                aria-label="Race"
+              >
+                <option value="">Select race</option>
+                {RACE_OPTIONS.map((r) => (
+                  <option key={r.value} value={r.value}>{r.label}</option>
+                ))}
+              </select>
+            </div>
+          )}
 
           {/* Password + strength */}
           <div className="form-field">

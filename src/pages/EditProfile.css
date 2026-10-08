@@ -159,6 +159,9 @@
 
 .dob-select option[value=''] { color: var(--text-light); }
 
+/* Full-width single dropdown (Gender / Race) — reuses .dob-select look */
+.ep-select { width: 100%; }
+
 .dob-row--error .dob-select {
   border-color: var(--error);
   background-color: #FEF2F2;

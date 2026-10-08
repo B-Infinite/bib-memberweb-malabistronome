@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { profileUpdateSendOTP, profileUpdateOTPConfirmation } from '../api/member.api';
 import OtpInput from '../components/OtpInput';
+import { GENDER_OPTIONS, RACE_OPTIONS, optionLabel } from '../config/profileOptions';
+import useCardTypeFields from '../hooks/useCardTypeFields';
 import './EditProfile.css';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -90,6 +92,17 @@ export default function EditProfile() {
     dobYear:  initialDob.dobYear,
   });
 
+  // Gender / Race — stored as codes ("M"/"F", Race.Type), pre-filled from the current profile.
+  // When hidden by the card type settings, the existing values are still sent back unchanged.
+  const { showGender, showRace } = useCardTypeFields();
+  const [gender, setGender] = useState(() => (user?.gender || '').toUpperCase());
+  const [race, setRace]     = useState(() => (user?.race   || '').toUpperCase());
+
+  // Keep a race set elsewhere (e.g. admin portal picked "IBAN") selectable so saving doesn't wipe it
+  const raceOptions = race && !RACE_OPTIONS.some((o) => o.value === race)
+    ? [...RACE_OPTIONS, { value: race, label: optionLabel(RACE_OPTIONS, race) }]
+    : RACE_OPTIONS;
+
   const [fieldErrors, setFieldErrors] = useState({});
   const [submitting, setSubmitting]   = useState(false);
   const [apiError, setApiError]       = useState('');
@@ -141,8 +154,8 @@ export default function EditProfile() {
         address:       user?.address       || '',
         state:         user?.state         || '',
         country:       user?.country       || '',
-        gender:        user?.gender        || '',
-        race:          user?.race          || '',
+        gender:        gender,
+        race:          race,
         designation:   user?.designation   || '',
         maritalStatus: user?.maritalStatus || '',
         accountNumber: user?.accountNumber || '',
@@ -157,6 +170,8 @@ export default function EditProfile() {
         email:        form.email.trim() || null,
         emailAddress: form.email.trim() || null,
         birthdate:    buildDob(form.dobDay, form.dobMonth, form.dobYear),
+        gender:       gender || null,
+        race:         race   || null,
       });
 
       navigate('/profile');
@@ -335,6 +350,48 @@ export default function EditProfile() {
               <span className="field-error" role="alert">{fieldErrors.email}</span>
             )}
           </div>
+
+          {/* Gender — shown only when the card type turns it on (CardTypeRequiredField) */}
+          {showGender && (
+            <div className="form-field">
+              <label className="form-label">
+                Gender <span className="ep-label-optional">(optional)</span>
+              </label>
+              <select
+                className="dob-select ep-select"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                aria-label="Gender"
+                disabled={submitting}
+              >
+                <option value="">Select gender</option>
+                {GENDER_OPTIONS.map((g) => (
+                  <option key={g.value} value={g.value}>{g.label}</option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* Race — shown only when the card type turns it on (CardTypeRequiredField) */}
+          {showRace && (
+            <div className="form-field">
+              <label className="form-label">
+                Race <span className="ep-label-optional">(optional)</span>
+              </label>
+              <select
+                className="dob-select ep-select"
+                value={race}
+                onChange={(e) => setRace(e.target.value)}
+                aria-label="Race"
+                disabled={submitting}
+              >
+                <option value="">Select race</option>
+                {raceOptions.map((r) => (
+                  <option key={r.value} value={r.value}>{r.label}</option>
+                ))}
+              </select>
+            </div>
+          )}
 
           {apiError && (
             <p className="field-error" role="alert" style={{ textAlign: 'center', marginBottom: 4 }}>

@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import APP_LINKS from '../config/appLinks';
+import { GENDER_OPTIONS, RACE_OPTIONS, optionLabel } from '../config/profileOptions';
+import useCardTypeFields from '../hooks/useCardTypeFields';
 import AppNav from '../components/AppNav';
 import './Profile.css';
 
@@ -34,6 +36,7 @@ function LinkField({ label, value, onClick }) {
 export default function Profile() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const { showGender, showRace } = useCardTypeFields();
 
   const initials = user?.name
     ?.split(' ')
@@ -64,6 +67,8 @@ export default function Profile() {
             <ProfileField label="Phone" value={user?.phone || user?.mobileNo} />
             <ProfileField label="Date of Birth" value={user?.birthdate || '—'} />
             <ProfileField label="Email" value={user?.email || user?.emailAddress || '—'} />
+            {showGender && <ProfileField label="Gender" value={optionLabel(GENDER_OPTIONS, user?.gender) || '—'} />}
+            {showRace   && <ProfileField label="Race" value={optionLabel(RACE_OPTIONS, user?.race) || '—'} />}
           </div>
           <div className="profile-btn-row">
             <button className="profile-edit-btn" onClick={() => navigate('/edit-profile')}>Edit Info</button>
