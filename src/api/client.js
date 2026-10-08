@@ -38,7 +38,8 @@ function handleSessionExpiry() {
 client.interceptors.response.use(
   (response) => {
     const { responseCode, responseMessage } = response.data || {};
-    if (responseCode === '30') {
+    // skipSessionExpiry: pre-login calls (e.g. Sign Up) must never bounce the user to /login
+    if (responseCode === '30' && !response.config?.skipSessionExpiry) {
       handleSessionExpiry();
       return Promise.reject(new Error('Session expired. Please log in again.'));
     }

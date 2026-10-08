@@ -5,6 +5,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  /* Keep the last line (ToS links) clear of the phone's home bar / nav buttons */
+  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
 }
 
 /* ── Partial brand-color hero with curved bottom ── */
@@ -286,6 +288,7 @@
     height: 100vh;
     overflow: hidden;
     background: var(--bg);
+    padding-bottom: 0;
   }
 
   .login-hero {

@@ -5,6 +5,7 @@
  *   active  — which nav item is highlighted: 'home' | 'vouchers' | 'history' | 'profile'
  */
 import { useNavigate } from 'react-router-dom';
+import useProfileCompletion from '../hooks/useProfileCompletion';
 
 import './AppNav.css';
 
@@ -53,6 +54,7 @@ const NAV_ITEMS = [
 
 export default function AppNav({ active }) {
   const navigate = useNavigate();
+  const { isIncomplete } = useProfileCompletion();
 
   return (
     <nav className="bottom-nav" aria-label="Main navigation">
@@ -73,7 +75,13 @@ export default function AppNav({ active }) {
           onClick={() => navigate(item.path)}
           aria-current={active === item.id ? 'page' : undefined}
         >
-          {item.icon}
+          <span className="nav-icon-wrap">
+            {item.icon}
+            {/* Red dot — profile has optional details left to fill in */}
+            {item.id === 'profile' && isIncomplete && (
+              <span className="red-dot red-dot--nav" aria-label="Profile incomplete" />
+            )}
+          </span>
           <span>{item.label}</span>
         </button>
       ))}

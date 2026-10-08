@@ -1,15 +1,19 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import APP_LINKS from '../config/appLinks';
+import { GENDER_OPTIONS, RACE_OPTIONS, optionLabel } from '../config/profileOptions';
+import useCardTypeFields from '../hooks/useCardTypeFields';
+import useProfileCompletion from '../hooks/useProfileCompletion';
 import AppNav from '../components/AppNav';
 import './Profile.css';
 
 // ── Sub-components ────────────────────────────────────────────────────────────
 
-function ProfileField({ label, value }) {
+function ProfileField({ label, value, incomplete = false }) {
   return (
     <div className="profile-field">
       <span className="profile-field-label">{label}</span>
+      {incomplete && <span className="red-dot profile-field-dot" aria-label="Not filled in yet" />}
       <span className="profile-field-value">{value}</span>
     </div>
   );
@@ -34,6 +38,8 @@ function LinkField({ label, value, onClick }) {
 export default function Profile() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const { showGender, showRace } = useCardTypeFields();
+  const { missing } = useProfileCompletion();
 
   const initials = user?.name
     ?.split(' ')
@@ -63,7 +69,9 @@ export default function Profile() {
             <ProfileField label="Full Name" value={user?.name} />
             <ProfileField label="Phone" value={user?.phone || user?.mobileNo} />
             <ProfileField label="Date of Birth" value={user?.birthdate || '—'} />
-            <ProfileField label="Email" value={user?.email || user?.emailAddress || '—'} />
+            <ProfileField label="Email" value={user?.email || user?.emailAddress || '—'} incomplete={missing.email} />
+            {showGender && <ProfileField label="Gender" value={optionLabel(GENDER_OPTIONS, user?.gender) || '—'} incomplete={missing.gender} />}
+            {showRace   && <ProfileField label="Race" value={optionLabel(RACE_OPTIONS, user?.race) || '—'} incomplete={missing.race} />}
           </div>
           <div className="profile-btn-row">
             <button className="profile-edit-btn" onClick={() => navigate('/edit-profile')}>Edit Info</button>

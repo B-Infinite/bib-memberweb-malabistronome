@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import './TenantsSection.css';
 
 const HOME_LIMIT = Number(import.meta.env.VITE_HOME_TENANTS_LIMIT) || 4;
+const TENANTS_TITLE = import.meta.env.VITE_TENANTS_TITLE || 'Find Us';
 
 export default function TenantsSection({ tenants = [] }) {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function TenantsSection({ tenants = [] }) {
   return (
     <div className="tenants-section">
       <div className="tenants-section-header">
-        <h3 className="section-title">Our Tenants</h3>
+        <h3 className="section-title">{TENANTS_TITLE}</h3>
         {hasMore && (
           <button className="see-all-btn" onClick={() => navigate('/tenants')}>
             View All

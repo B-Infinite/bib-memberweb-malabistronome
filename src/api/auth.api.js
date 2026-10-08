@@ -25,6 +25,17 @@ export const profileLogin = (mobileNo, password) =>
   });
 
 /**
+ * Pre-login — get the CardTypeRequiredField settings for this site's card type.
+ * Response: { cardTypeID, isRequiredGender, isRequiredRace, ... } ("1" = on, "0" = off)
+ */
+export const getCardTypeRequiredField = () =>
+  client.post(
+    '/Card/GetCardTypeRequiredFieldV2',
+    { clientID: CLIENT_ID, cardTypeID: CARD_TYPE_ID },
+    { skipSessionExpiry: true },
+  );
+
+/**
  * Step 1 of registration — send OTP to mobile number.
  * @param {string} mobileNo
  * @param {string} [emailAddress]

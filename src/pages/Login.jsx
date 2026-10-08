@@ -163,18 +163,18 @@ export default function Login() {
 
         </form>
 
-        <p className="login-tos">
-          By continuing, you agree to our{' '}
-          <Link to="/terms" className="text-link">Terms of Service</Link>
-          {' '}and{' '}
-          <Link to="/privacy" className="text-link">Privacy Policy</Link>
+        <p className="login-signup-link">
+          Don&apos;t have an account?{' '}
+          <Link to="/signup" className="login-signup-anchor">Join Mala Bistronome</Link>
         </p>
       </div>
 
-      {/* ── Sign up link below card ── */}
-      <p className="login-signup-link">
-        Don&apos;t have an account?{' '}
-        <Link to="/signup" className="login-signup-anchor">Join Mala Bistronome</Link>
+      {/* ── Terms of Service below card ── */}
+      <p className="login-tos">
+        By continuing, you agree to our{' '}
+        <Link to="/terms" className="text-link">Terms of Service</Link>
+        {' '}and{' '}
+        <Link to="/privacy" className="text-link">Privacy Policy</Link>
       </p>
 
       </div>{/* end login-right */}

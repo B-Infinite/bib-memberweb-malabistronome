@@ -13,3 +13,17 @@
   letter-spacing: -0.5px;
   color: #fff;
 }
+
+/* Icon wrapper — anchors the red "incomplete profile" dot to the icon's top-right */
+.nav-icon-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.red-dot--nav {
+  position: absolute;
+  top: -2px;
+  right: -4px;
+  border: 2px solid var(--surface);
+  box-sizing: content-box;
+}
